@@ -238,7 +238,7 @@ const ProductEdit = (props: any) => {
                </MButton>
             </div>
          </div>
-         <div className="p-20 pt-12 bg-gray-50 flex justify-center">
+         <div className="p-20 pt-12 bg-white flex justify-center">
             <DescriptionEdit />
          </div>
       </div>
