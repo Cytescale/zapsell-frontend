@@ -71,7 +71,7 @@ const DescriptionEdit = (props: any) => {
                      </div>
                   </div>
                </div>
-               <div className="p-8 flex flex-col items-center gap-5">
+               <div className="p-8 flex flex-col items-center gap-6">
                   <div className="h-full w-full flex flex-row gap-4 justify-start">
                      <div className="text-black tracking-wide flex grow flex-row w-full">
                         <MInput label="Display Name" fullWidth />
@@ -126,7 +126,7 @@ const DescriptionEdit = (props: any) => {
                      </div>
                   </div>
                </div>
-               <div className="p-8 flex flex-col items-center gap-5">
+               <div className="p-8 flex flex-col items-center gap-6">
                   <div className="flex flex-row justify-between items-center h-fit w-full">
                      <div className="flex flex-col w-fit gap-0.5">
                         <div className="text-sm text-black font-medium">
@@ -238,7 +238,7 @@ const ProductEdit = (props: any) => {
                </MButton>
             </div>
          </div>
-         <div className="p-20 pt-12 bg-white flex justify-center">
+         <div className="p-20 pt-12 bg-gray-50 flex justify-center">
             <DescriptionEdit />
          </div>
       </div>
