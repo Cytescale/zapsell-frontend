@@ -241,7 +241,7 @@ const Settings = (props: any) => {
                </MButton>
             </div>
          </div>
-         <div className="p-20 pt-12 bg-gray-50 flex justify-center flex-row gap-6">
+         <div className="p-20 pt-12 bg-white flex justify-center flex-row gap-6">
             <SettingsTabs />
             <GeneralSettings />
          </div>

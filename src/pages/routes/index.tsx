@@ -73,7 +73,7 @@ const MRouter = (props: any) => {
                      </ShellComp>
                   }
                />
-               <Route path="/" element={<Navigate to="/products" />} />
+               {/* <Route path="/" element={<Navigate to="/products" />} /> */}
             </Routes>
          </Router>
       </>

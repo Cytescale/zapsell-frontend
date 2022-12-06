@@ -7,13 +7,7 @@ import 'remixicon/fonts/remixicon.css'
 import './design/stylesheet.css'
 
 function App() {
-   const [count, setCount] = useState(0)
-
-   return (
-      
-         <MRouter />
-      
-   )
+   return <MRouter />
 }
 
 export default App
