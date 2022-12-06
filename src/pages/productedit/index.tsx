@@ -54,7 +54,7 @@ const DescriptionEdit = (props: any) => {
    return (
       <div className="flex flex-row gap-5 w-3/4 ">
          <div className="flex flex-col gap-5  w-fit">
-            <div className="bg-white   rounded-md border border-solid border-gray-200 shadow-sm   ">
+            <div className="bg-white   rounded-md border border-solid border-gray-200 ">
                <div className="flex flex-row gap-4 w-full p-8 pb-0 ">
                   <div className="flex flex-col justify-center items-center">
                      <div className="flex flex-row justify-center items-center w-12 h-12 rounded-full text-xl bg-blue-100 text-blue-500">
@@ -90,7 +90,7 @@ const DescriptionEdit = (props: any) => {
                   <MTextArea fullWidth label="Description"></MTextArea>
                </div>
             </div>
-            <div className="bg-white rounded-md border border-solid border-gray-200 shadow-sm">
+            <div className="bg-white rounded-md border border-solid border-gray-200 ">
                <div className="flex flex-row gap-4 w-full p-8 pb-0 ">
                   <div className="flex flex-col justify-center items-center">
                      <div className="flex flex-row justify-center items-center w-12 h-12 rounded-full text-xl bg-red-100 text-red-500">
@@ -109,7 +109,7 @@ const DescriptionEdit = (props: any) => {
                </div>
                <div className="p-8 flex flex-col items-center gap-5"></div>
             </div>
-            <div className="bg-white rounded-md  border border-solid border-gray-200 shadow-sm">
+            <div className="bg-white rounded-md  border border-solid border-gray-200 ">
                <div className="flex flex-row gap-4 w-full p-8 pb-0 ">
                   <div className="flex flex-col justify-center items-center">
                      <div className="flex flex-row justify-center items-center w-12 h-12 rounded-full text-xl bg-yellow-100 text-yellow-500">

@@ -5,7 +5,7 @@ const MSlidSwitch = (props: any) => {
          <div
             className={`
             w-11 h-6
-          bg-gray-200
+          bg-gray-300
             peer-focus:outline-none
             rounded-full
             peer
@@ -21,7 +21,7 @@ const MSlidSwitch = (props: any) => {
             after:rounded-full
             after:h-5 after:w-5
             after:transition-all
-          peer-checked:bg-emerald-200
+          peer-checked:bg-violet-500
           `}
          ></div>
       </label>
