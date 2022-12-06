@@ -222,7 +222,7 @@ const Settings = (props: any) => {
       >
          <div className=" relative flex flex-row bg-gray-50 justify-between items-center h-fit w-screen pt-8 pb-8 px-36 border-b-2 border-solid border-gray-200 ">
             <div className="flex flex-col w-fit gap-1 ">
-               {/* <MBreadcrumbs /> */}
+               <MBreadcrumbs />
                <div className="text-black font-semibold text-2xl tracking-tight flex flex-row items-start gap-2">
                   Personal Settings
                   <div className="flex flex-col text-xs text-gray-600">
