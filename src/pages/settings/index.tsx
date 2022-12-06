@@ -30,7 +30,7 @@ const SettingsTabs = (props: any) => {
                      'text-sm font-medium ',
                      'flex flex-row gap-2 items-center justify-start rounded-md',
                      e[1].length > 1
-                        ? 'text-blue-500 bg-blue-50'
+                        ? 'text-blue-500 bg-white'
                         : 'text-gray-500',
                   )}
                   href={e[1]}
@@ -48,7 +48,7 @@ const GeneralSettings = (props: any) => {
    return (
       <div className="flex flex-row gap-5 w-3/4 ">
          <div className="flex flex-col gap-7  w-fit">
-            <div className="bg-white   rounded-md border border-solid border-gray-200">
+            <div className="bg-white   rounded-md border border-solid border-slate-200">
                <div className="flex flex-row gap-5 w-full p-8 pb-0 ">
                   <div className="flex flex-col justify-center items-center">
                      <div className="flex flex-row justify-center items-center w-12 h-12 rounded-full text-xl bg-blue-100 text-blue-500">
@@ -78,7 +78,7 @@ const GeneralSettings = (props: any) => {
                   </div>
                </div>
             </div>
-            <div className="bg-white   rounded-md border border-solid border-gray-200">
+            <div className="bg-white   rounded-md border border-solid border-slate-200">
                <div className="flex flex-row gap-4 w-full p-8 pb-0 ">
                   <div className="flex flex-col justify-center items-center">
                      <div className="flex flex-row justify-center items-center w-12 h-12 rounded-full text-xl bg-green-100 text-green-500">
@@ -140,7 +140,7 @@ const GeneralSettings = (props: any) => {
                   </div>
                </div>
             </div>
-            <div className="bg-white   rounded-md border border-solid border-gray-200">
+            <div className="bg-white   rounded-md border border-solid border-slate-200">
                <div className="flex flex-row gap-4 w-full p-8 pb-0 ">
                   <div className="flex flex-col justify-center items-center">
                      <div className="flex flex-row justify-center items-center w-12 h-12 rounded-full text-xl bg-yellow-100 text-yellow-500">
@@ -220,9 +220,9 @@ const Settings = (props: any) => {
             'overflow-y-scroll  w-screen overflow-x-hidden relative',
          )}
       >
-         <div className=" relative flex flex-row bg-gray-50 justify-between items-center h-fit w-screen pt-8 pb-8 px-36 border-b-2 border-solid border-gray-200 ">
+         <div className=" relative flex flex-row bg-slate-100 justify-between items-center h-fit w-screen pt-8 pb-8 px-36 border-b-2 border-solid border-gray-200 ">
             <div className="flex flex-col w-fit gap-1 ">
-               <MBreadcrumbs />
+               {/* <MBreadcrumbs /> */}
                <div className="text-black font-semibold text-2xl tracking-tight flex flex-row items-start gap-2">
                   Personal Settings
                   <div className="flex flex-col text-xs text-gray-600">
@@ -241,7 +241,7 @@ const Settings = (props: any) => {
                </MButton>
             </div>
          </div>
-         <div className="p-20 pt-12 bg-gray-50 flex justify-center flex-row gap-6">
+         <div className="p-20 pt-12 bg-slate-100 flex justify-center flex-row gap-6">
             <SettingsTabs />
             <GeneralSettings />
          </div>

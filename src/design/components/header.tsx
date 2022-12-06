@@ -174,10 +174,10 @@ const HeaderRightCont = (props: any) => {
          </button>
          <button
             className={classNames(
-               'flex flex-col h-8 w-8 bg-transparent text-violet-100 justify-center items-center text-xl rounded-full',
+               'flex flex-col h-8 w-8 bg-violet-600 text-violet-100 justify-center items-center text-xl rounded-md',
             )}
          >
-            <i className="ri-feedback-line"></i>
+            <i className="ri-add-line"></i>
          </button>
          <ProfileDropdown />
       </>

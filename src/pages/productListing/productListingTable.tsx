@@ -85,7 +85,7 @@ const TableCellRender = (props: any) => {
       case 'product':
          return (
             <td className="h-full ">
-               <a className="" href="/products/productname/edit">
+               <a className="" href="/products/productname/edit#description">
                   <div className="text-black text-sm flex flex-row gap-5  justify-start items-center ">
                      <div className="w-12 h-12 rounded-md bg-gray-100"></div>
                      {props.cell.render('Cell')}
