@@ -243,7 +243,7 @@ const ProductTableRender2 = (props: any) => {
                   return (
                      <tr
                         className={classNames(
-                           'h-20 border-t-0 border-solid border-gray-100 hover:bg-slate-100',
+                           'h-20 border-t-0 border-solid border-gray-100 ',
                            i % 2 != 0 && 'bg-slate-50',
                         )}
                         onClick={() => {
