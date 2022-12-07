@@ -13,11 +13,13 @@ import MTextArea from '../../design/components/textarea'
 import MBadge from '../../design/components/badge'
 import DescriptionEdit from './productdesc'
 import PaymentEdit from './productpayment'
+import AppearanceEdit from './productappear'
 
 const ProductTabArr = [
    ['Description', '#description', <i className="ri-information-line"></i>],
    ['Content', '#content', <i className="ri-file-line"></i>],
    ['Payment', '#payment', <i className="ri-bank-card-line"></i>],
+   ['Appearance', '#appearance', <i className="ri-brush-line"></i>],
 ]
 
 const ProductEditTabs = (props: any) => {
@@ -62,7 +64,9 @@ const ProductEditTabSwtich = (props: any) => {
       case ProductTabArr[2][1]: {
          return <PaymentEdit />
       }
-
+      case ProductTabArr[3][1]: {
+         return <AppearanceEdit />
+      }
       default: {
          return <div>Page Not Found</div>
       }
@@ -73,10 +77,10 @@ const ProductEdit = (props: any) => {
    return (
       <div
          className={classNames(
-            'overflow-y-scroll  w-screen overflow-x-hidden relative',
+            'overflow-y-scroll  bg-slate-100  w-screen overflow-x-hidden relative',
          )}
       >
-         <div className=" relative flex flex-row bg-slate-100 justify-between items-center h-fit w-screen pt-8 pb-0 px-64 border  border-t-0 border-solid border-slate-300">
+         <div className=" relative flex flex-row  justify-between items-center h-fit w-screen pt-8 pb-0 px-64 border  border-t-0 border-solid border-slate-300">
             <div className="flex flex-col w-fit gap-1  pb-0">
                {/* <MBreadcrumbs /> */}
                <div className="text-black font-semibold text-2xl tracking-tight flex flex-row items-center gap-2">
@@ -90,26 +94,26 @@ const ProductEdit = (props: any) => {
             </div>
             <div className="flex flex-row gap-4 s">
                <MButton
-                  variant="outline"
+                  variant="white"
                   modifier="monochrome"
                   icon={<i className="ri-save-line"></i>}
                >
-                  Save Changes
+                  Save
                </MButton>
                <MButton
-                  variant="outline"
+                  variant="white"
                   modifier="monochrome"
                   icon={<i className="ri-external-link-line"></i>}
                >
-                  Preview Page
+                  Preview
                </MButton>
-               <MButton variant="outline" modifier="monochrome">
-                  Unpublish
+               <MButton variant="white" modifier="danger">
+                  Unlist
                </MButton>
             </div>
          </div>
 
-         <div className="p-20 pt-12 bg-slate-100 flex justify-center">
+         <div className="p-20 pt-12 pb-44 flex justify-center">
             <ProductEditTabSwtich />
             {/* <DescriptionEdit /> */}
          </div>

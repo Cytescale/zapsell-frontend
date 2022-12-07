@@ -33,10 +33,7 @@ const TestPage = (props: any) => {
    const [isOpen, setisOpen] = useState(false)
    return (
       <>
-         <div className="p-10 text-xl font-bold tracking-wide bg-black text-white">
-            MAY UI GRID
-         </div>
-         <div className=" bg-white grid grid-cols-4 grid-flow-row ">
+         <div className=" bg-white grid grid-cols-4 grid-flow-row overflow-y-scroll">
             <HolderCont title="Text input">
                <MInput
                   tagable

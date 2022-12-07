@@ -6,7 +6,7 @@ export interface MButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    fullWidth?: boolean
    icon?: React.ReactElement
    rightIcon?: React.ReactElement
-   variant?: 'normal' | 'filled' | 'plain' | 'outline' | 'transparent'
+   variant?: 'normal' | 'filled' | 'plain' | 'outline' | 'transparent' | 'white'
    modifier?: 'monochrome' | 'plain' | 'danger'
    size?: 'md' | 'xl' | 'xs'
    textAlign?: 'left' | 'center' | 'right'
@@ -16,7 +16,12 @@ export interface MButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    iserror?: boolean
 }
 
-const MButton = (props: MButtonProps) => {
+const defaultProps: MButtonProps = {
+   variant: 'normal',
+}
+
+const MButton = (props: MButtonProps & typeof defaultProps) => {
+   console.log(props.variant)
    return (
       <button
          {...props}
@@ -27,13 +32,15 @@ const MButton = (props: MButtonProps) => {
             'flex flex-row gap-1 justify-center items-center',
             'text-sm',
             'rounded-md',
-            'text-gray-800 bg-gray-100 hover:bg-gray-200',
             props.icon && !props.children && !props.rightIcon && 'w-9',
             props.fullWidth ? 'w-full' : 'w-fit',
             props.children ? 'px-5' : 'px-4',
             props.icon && props.children && 'pl-4',
+            props.variant == 'normal' &&
+               'text-gray-800 bg-gray-100 hover:bg-gray-200',
             props.variant == 'filled' && 'bg-emerald-100  hover:bg-emerald-300',
             props.variant == 'transparent' && 'bg-transparent ',
+            props.variant == 'white' && 'bg-white hover:bg-gray-200',
             props.variant == 'outline' &&
                'bg-transparent border border-solid  border-gray-300 hover:bg-gray-100',
             props.modifier == 'monochrome' && 'text-black hover:bg-slate-100',
@@ -99,5 +106,5 @@ const MButton = (props: MButtonProps) => {
       </button>
    )
 }
-
+MButton.defaultProps = defaultProps
 export default MButton

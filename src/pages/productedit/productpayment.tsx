@@ -11,8 +11,9 @@ import MDropDown from '../../design/components/dropdown'
 import MSwitch from '../../design/components/switch'
 import MTextArea from '../../design/components/textarea'
 import MBadge from '../../design/components/badge'
-import { ContentSkeleton, SideContentSkeleton } from './utils'
+import { ContentSkeleton } from './utils'
 import { Transition } from '@headlessui/react'
+import moneyBanner from '../../assets/vectors/abstract-easy-money.png'
 
 const AdditionInfoListMap = [
    {
@@ -39,14 +40,14 @@ const PaymentEdit = (props: any) => {
          leave="transition-opacity duration-150"
          leaveFrom="opacity-100"
          leaveTo="opacity-0"
-         className="flex flex-row gap-5 w-3/4 "
+         className="flex flex-row gap-5 w-3/4"
       >
-         <div className="flex flex-col gap-5  w-fit">
+         <div className="flex flex-col gap-5 w-2/3">
             <ContentSkeleton
+               banner={moneyBanner}
                icon={<i className="ri-file-line"></i>}
                title={'Checkout'}
-               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Pellentesque laoreet fringilla neque, eu efficitur"
+               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             >
                <MListBox
                   fullWidth
@@ -57,13 +58,12 @@ const PaymentEdit = (props: any) => {
             <ContentSkeleton
                icon={<i className="ri-file-line"></i>}
                title={'Receipt Label'}
-               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Pellentesque laoreet fringilla neque, eu efficitur"
+               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             >
                <MInput label="Button" fullWidth />
             </ContentSkeleton>
          </div>
-         <div className="flex flex-col  gap-5"></div>
+         <div className="flex flex-col  gap-5  w-1/3"></div>
       </Transition>
    )
 }

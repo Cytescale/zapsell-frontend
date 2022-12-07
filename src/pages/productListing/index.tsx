@@ -166,8 +166,8 @@ const ProductListing = (props: any) => (
    <div className={classNames('overflow-y-scroll')}>
       <div className="p-32 pb-44  pt-20 bg-violet-700 bg-gradient-to-b from-violet-700 to-violet-800  w-screen h-fit flex flex-row grow justify-between items-center">
          <div className="flex flex-col w-fit justify-start items-start">
-            <div className="text-white text-3xl font-medium tracking-wide">
-               Products🎉
+            <div className="text-white text-3xl font-medium tracking-normal flex flex-row gap-1">
+               Products<span>🎉</span>
             </div>
             <div className="text-violet-200 text-md ">
                You can details of all the created products
@@ -187,16 +187,7 @@ const ProductListing = (props: any) => (
                      rightButtonIcon={<i className="ri-close-line"></i>}
                   />
                   <ProductSortDropdown />
-                  {/* <MButton
-                     //  variant="outline"
-                     icon={<i className="ri-sort-asc"></i>}
-                  >
-                     Sort
-                  </MButton> */}
-                  <MButton
-                     //  variant="outline"
-                     icon={<i className="ri-refresh-line"></i>}
-                  >
+                  <MButton icon={<i className="ri-refresh-line"></i>}>
                      Refresh
                   </MButton>
                </div>

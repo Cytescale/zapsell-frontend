@@ -11,9 +11,14 @@ import MDropDown from '../../design/components/dropdown'
 import MSwitch from '../../design/components/switch'
 import MTextArea from '../../design/components/textarea'
 import MBadge from '../../design/components/badge'
-import { ContentSkeleton, SideContentSkeleton } from './utils'
+import { ContentSkeleton } from './utils'
 import { Transition } from '@headlessui/react'
 import MDropzone from '../../design/components/dropzone'
+import brainstormBanner from '../../assets/vectors/abstract-brainstorm.png'
+import moneyBanner from '../../assets/vectors/abstract-easy-money.png'
+import logoutBanner from '../../assets/vectors/abstract-logged-out.png'
+import uploadBanner from '../../assets/vectors/abstract-upload.png'
+// import SiennaEditor from '../../editor'
 
 const CurrenListMap = [
    { id: 0, name: 'Ruppes (INR)' },
@@ -41,12 +46,13 @@ const DescriptionEdit = (props: any) => {
          leaveTo="opacity-0"
          className="flex flex-row gap-5 w-3/4 "
       >
-         <div className="flex flex-col gap-5  w-fit">
+         <div className="flex flex-col gap-5   w-2/3">
+            {/* <MDropzone /> */}
             <ContentSkeleton
+               banner={logoutBanner}
                icon={<i className="ri-file-line"></i>}
                title={'Product Description'}
-               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Pellentesque laoreet fringilla neque, eu efficitur"
+               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             >
                <div className="h-full w-full flex flex-row gap-4 justify-start">
                   <div className="text-black tracking-wide flex grow flex-row w-full">
@@ -66,21 +72,21 @@ const DescriptionEdit = (props: any) => {
                      />
                   </div>
                </div>
+               {/* <SiennaEditor /> */}
                <MTextArea fullWidth label="Description"></MTextArea>
             </ContentSkeleton>
             <ContentSkeleton
+               // banner={uploadBanner}
                icon={<i className="ri-file-line"></i>}
                title={'Media'}
-               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Pellentesque laoreet fringilla neque, eu efficitur"
+               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             >
                <MDropzone />
             </ContentSkeleton>
             <ContentSkeleton
                icon={<i className="ri-file-line"></i>}
                title={'Inventory'}
-               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Pellentesque laoreet fringilla neque, eu efficitur"
+               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             >
                <div className="flex flex-row justify-between items-center h-fit w-full">
                   <div className="flex flex-col w-fit gap-0.5">
@@ -128,8 +134,7 @@ const DescriptionEdit = (props: any) => {
             <ContentSkeleton
                icon={<i className="ri-file-line"></i>}
                title={'General Settigs'}
-               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Pellentesque laoreet fringilla neque, eu efficitur"
+               desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             >
                <div className="flex flex-row justify-between items-center h-fit w-full">
                   <div className="flex flex-col w-fit gap-0.5">
@@ -173,15 +178,24 @@ const DescriptionEdit = (props: any) => {
                </div>
             </ContentSkeleton>
          </div>
-         <div className="flex flex-col  gap-5">
-            <SideContentSkeleton title="Pricing">
+         <div className="flex flex-col  gap-5 w-1/3">
+            <ContentSkeleton
+               icon={<i className="ri-file-line"></i>}
+               title="Pricing"
+               desc="Mark product as e-publication for VAT purposes"
+            >
                <MInput label="Price" fullWidth />
                <MInput label="Compare Price" fullWidth />
                <MListBox listMap={CurrenListMap} label="Currency" fullWidth />
-            </SideContentSkeleton>
-            <SideContentSkeleton title="Summary">
+            </ContentSkeleton>
+            <ContentSkeleton
+               // banner={moneyBanner}
+               icon={<i className="ri-file-line"></i>}
+               title="Summary"
+               desc="Mark product as e-publication for VAT purposes"
+            >
                <MTextArea label="Summary" fullWidth />
-            </SideContentSkeleton>
+            </ContentSkeleton>
          </div>
       </Transition>
    )
