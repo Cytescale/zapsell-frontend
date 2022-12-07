@@ -1,6 +1,6 @@
 export const ContentSkeleton = (props: any) => {
    return (
-      <div className="bg-white   rounded-md border border-solid border-slate-200 ">
+      <div className="bg-white   rounded-md border border-solid border-slate-200 shadow-sm">
          {props.banner && (
             <div className="relative flex w-full h-56 bg-slate-300 rounded-t-md">
                <img
@@ -21,20 +21,20 @@ export const ContentSkeleton = (props: any) => {
             </div>
          )}
 
-         <div className="flex flex-row gap-4 w-full p-6 pb-0 ">
-            <div className="flex flex-col justify-center items-center">
-               <div className="flex flex-row justify-center items-start w-3 h-full rounded-full text-xl text-blue-500">
+         <div className="flex flex-row gap-2 w-full p-6 pb-0  ">
+            <div className="flex flex-col h-fit">
+               <div className="flex flex-row justify-center items-start h-fit rounded-full text-xl text-blue-500">
                   {props.icon}
                </div>
             </div>
-            <div className="flex flex-col gap-0.5">
-               <div className="text-black-700 text-sm font-medium tracking-wide">
-                  {props.title}
-               </div>
+            <div className="text-black-700 text-sm font-medium tracking-wide flex justify-center items-center h-7 text-blue-500">
+               {props.title}
+            </div>
+            {/* <div className="flex flex-col gap-0.5">
                <div className="text-gray-400 text-xs font-medium w-full  tracking-wide">
                   {props.desc}
-               </div>
-            </div>
+               </div> 
+            </div> */}
          </div>
          <div className="p-8 flex flex-col items-center gap-6">
             {props.children}
