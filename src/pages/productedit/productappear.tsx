@@ -107,13 +107,13 @@ const AppearanceEdit = (props: any) => {
                                     setthemeIdSelec(i)
                                  }}
                                  className={classNames(
-                                    'relative col-span-1	p-3 pb-0 flex flex-col rounded-xl cursor-pointer hover:opacity-60 border border-solid border-slate-300',
+                                    'relative col-span-1 flex flex-col rounded-xl cursor-pointer hover:opacity-60 border border-solid border-slate-300',
                                     themeIdSelec == i &&
                                        'border-2 border-solid border-violet-600',
                                  )}
                               >
-                                 <div className=" h-40  flex flex-row bg-gray-300  bg-gradient-to-b from-gray-500 to-gray-600   rounded-xl m-0"></div>
-                                 <div className="relative h-auto p-3 pb-4 pl-0 gap-2 text-sm text-black font-medium flex flex-row justify-start items-center">
+                                 <div className=" h-40  flex flex-row bg-gray-300  bg-gradient-to-b from-gray-500 to-gray-600   rounded-t-xl m-0"></div>
+                                 <div className="relative h-auto p-3  gap-2 text-sm text-black font-medium flex flex-row justify-start items-center">
                                     <div>{e.name}</div>
                                     {themeIdSelec == i && (
                                        <i className="ri-checkbox-circle-fill text-xl text-violet-600 font-normal rounded-md absolute top-0 right-0  mx-2 my-1"></i>
