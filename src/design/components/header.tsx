@@ -1,4 +1,11 @@
-import { useState } from 'react'
+import {
+   PointerEvent,
+   FocusEvent,
+   useEffect,
+   useRef,
+   useState,
+   CSSProperties,
+} from 'react'
 import { useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 import MButton from './button'
@@ -170,14 +177,15 @@ const HeaderRightCont = (props: any) => {
                'flex flex-col h-8 w-8 bg-transparent text-violet-100 justify-center items-center text-xl rounded-full',
             )}
          >
-            <i className="ri-question-mark"></i>
+            <i className="ri-question-mark   "></i>
          </button>
          <button
             className={classNames(
-               'flex flex-col h-8 w-8 bg-violet-600 text-violet-100 justify-center items-center text-xl rounded-md',
+               'flex flex-row gap-2 h-8 w-8  font-medium bg-violet-600 text-violet-100 justify-center items-center text-xl px-4 rounded-md hover:bg-violet-500',
             )}
          >
             <i className="ri-add-line"></i>
+            {/* Add Product */}
          </button>
          <ProfileDropdown />
       </>
@@ -219,13 +227,14 @@ const PageHeaderPane = (props: any) => {
                      return (
                         <div
                            className={classNames(
-                              'px-3',
+                              '',
                               'mx-0',
-                              'py-2',
+                              '',
                               'flex justify-center items-center',
                               'rounded-md',
-                              location.pathname.includes(e[1]) &&
-                                 'bg-violet-600',
+                              location.pathname.includes(e[1])
+                                 ? 'bg-violet-600 '
+                                 : 'hover:bg-violet-600 ',
                            )}
                         >
                            <a
@@ -236,7 +245,7 @@ const PageHeaderPane = (props: any) => {
                                  'font-normal',
                                  'tracking-wide',
                                  'text-sm',
-                                 'h-full',
+                                 'h-ful py-2 px-3',
                                  'flex flex-col justify-center items-center',
                               )}
                               href={e[1]}

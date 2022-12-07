@@ -16,6 +16,7 @@ import MBadge from '../../design/components/badge'
 import MDropDown from '../../design/components/dropdown'
 import MButton from '../../design/components/button'
 import MListBox from '../../design/components/listbox'
+import MCheckbox from '../../design/components/checkbox'
 
 export type TableInstanceWithHooks<T extends object> = TableInstance<T> &
    UsePaginationInstanceProps<T> &
@@ -34,40 +35,42 @@ const ProductMoreDropdown = (props: any) => {
             />
          }
       >
-         <Menu.Item>
-            <a
-               className={`w-56 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
-               href="/account-settings"
-            >
-               <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide ">
-                  <i className="ri-pencil-line text-lg  flex justify-center items-center h-max"></i>
-                  Edit
-               </div>
-            </a>
-         </Menu.Item>
-         <Menu.Item>
-            <a
-               className={`w-56 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
-               href="/account-settings"
-            >
-               <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                  <i className="ri-edit-circle-line text-lg  flex justify-center items-center h-max"></i>
-                  Change description
-               </div>
-            </a>
-         </Menu.Item>
-         <div className="flex grow w-full my-2 h-0 border border-solid border-gray-100 border-t-0 border-l-0 border-r-0  border-b-2" />
-         <Menu.Item>
-            <a
-               className={`w-56 p-1.5 pl-4 text-sm text-red-600 hover:bg-slate-100`}
-               href="/account-settings"
-            >
-               <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                  <i className="ri-delete-bin-7-line text-lg  flex justify-center items-center h-max"></i>
-                  Delete Product
-               </div>
-            </a>
-         </Menu.Item>
+         <div className="w-48 flex flex-col ">
+            <Menu.Item>
+               <a
+                  className={`w-full p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
+                  href="/account-settings"
+               >
+                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide ">
+                     <i className="ri-pencil-line text-sm  flex justify-center items-center h-max"></i>
+                     Edit
+                  </div>
+               </a>
+            </Menu.Item>
+            <Menu.Item>
+               <a
+                  className={`w-full p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
+                  href="/account-settings"
+               >
+                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
+                     <i className="ri-edit-circle-line text-sm  flex justify-center items-center h-max"></i>
+                     Description
+                  </div>
+               </a>
+            </Menu.Item>
+            <div className="flex grow w-full my-1 h-0 border border-solid border-gray-100 border-t-0 border-l-0 border-r-0  border-b-2" />
+            <Menu.Item>
+               <a
+                  className={`w-full p-1.5 pl-4 text-sm text-red-600 hover:bg-slate-100`}
+                  href="/account-settings"
+               >
+                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
+                     <i className="ri-delete-bin-7-line text-sm  flex justify-center items-center h-max"></i>
+                     Delete
+                  </div>
+               </a>
+            </Menu.Item>
+         </div>
       </MDropDown>
    )
 }
@@ -78,7 +81,8 @@ const TableCellRender = (props: any) => {
          return (
             <td className="w-20 h-20">
                <div className="h-full w-full flex flex-col justify-center items-center text-sm font-medium text-gray-400">
-                  {Number(props.cell.row.id) + 1}
+                  <MCheckbox size="md" />
+                  {/* {Number(props.cell.row.id) + 1} */}
                </div>
             </td>
          )
@@ -207,7 +211,7 @@ const ProductTableRender2 = (props: any) => {
                         >
                            <th
                               className={classNames(
-                                 `text-xs font-medium   text-black tracking-wide flex flex-row items-center justify-center `,
+                                 `text-sm font-medium   text-black tracking-wide flex flex-row items-center justify-center `,
                                  column.isSorted &&
                                     column.canSort &&
                                     'text-blue-600',
@@ -239,7 +243,7 @@ const ProductTableRender2 = (props: any) => {
                   return (
                      <tr
                         className={classNames(
-                           'h-20 border-t-0 border-solid border-gray-100 hover:bg-gray-50',
+                           'h-20 border-t-0 border-solid border-gray-100 hover:bg-slate-100',
                            i % 2 != 0 && 'bg-slate-50',
                         )}
                         onClick={() => {

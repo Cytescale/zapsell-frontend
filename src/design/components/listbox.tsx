@@ -75,18 +75,18 @@ const MListBox = (props: any) => {
                         <Listbox.Option
                            key={person.id}
                            value={person}
-                           className={`w-full p-1.5 pl-4 text-md text-black hover:bg-slate-100`}
+                           className={`w-full p-2 pl-4 text-md text-black hover:bg-slate-100`}
                         >
                            {({ active, selected }) => (
-                              <div className="flex flex-row items-center gap-2 text-md ">
+                              <div className="relative flex flex-row items-center gap-2 text-sm ">
+                                 {person.name}
                                  <div
-                                    className={`w-5 h-5 flex font-bold justify-center items-center`}
+                                    className={`w-5 h-5 flex font-bold justify-center items-center absolute right-0 mr-2`}
                                  >
                                     {selected ? (
                                        <i className="ri-check-line"></i>
                                     ) : null}
                                  </div>
-                                 {person.name}
                               </div>
                            )}
                         </Listbox.Option>

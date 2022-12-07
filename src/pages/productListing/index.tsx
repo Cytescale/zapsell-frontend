@@ -9,6 +9,7 @@ import MModal from '../../design/components/modal'
 import MListBox from '../../design/components/listbox'
 import MDropDown from '../../design/components/dropdown'
 import MSwitch from '../../design/components/switch'
+import MCheckbox from '../../design/components/checkbox'
 
 const ProductAddModal = (props: any) => {
    const [isOpen, setisOpen] = useState(false)
@@ -26,6 +27,7 @@ const ProductAddModal = (props: any) => {
          <MButton
             onClick={() => setisOpen(true)}
             icon={<i className="ri-add-line"></i>}
+            size={'md'}
          >
             Add Product
          </MButton>
@@ -80,6 +82,7 @@ const ProductExportModal = (props: any) => {
    return (
       <>
          <MButton
+            // variant="outline"
             onClick={() => setisOpen(true)}
             icon={<i className="ri-file-chart-line"></i>}
          >
@@ -140,7 +143,9 @@ const ProductSortDropdown = (props: any) => {
    return (
       <MDropDown
          dropButtom={
-            <MButton icon={<i className="ri-sort-asc"></i>}>Sort</MButton>
+            <MButton icon={<i className="ri-sort-asc"></i>}>
+               Sort by (a-z)
+            </MButton>
          }
       >
          {SortArr.map((e) => {
@@ -150,8 +155,7 @@ const ProductSortDropdown = (props: any) => {
                      className={`w-56 p-1.5 pl-4 h-9 text-sm text-black hover:bg-slate-100`}
                   >
                      <div className="flex flex-row gap-3 text-sm items-center p-0 tracking-wide ">
-                        <MSwitch />
-                        {/* <i className="ri-pencil-line text-lg  flex justify-center items-center h-max"></i> */}
+                        <MCheckbox />
                         {e}
                      </div>
                   </button>
@@ -162,45 +166,88 @@ const ProductSortDropdown = (props: any) => {
    )
 }
 
-const ProductListing = (props: any) => (
-   <div className={classNames('overflow-y-scroll')}>
-      <div className="p-32 pb-44  pt-20 bg-violet-700 bg-gradient-to-b from-violet-700 to-violet-800  w-screen h-fit flex flex-row grow justify-between items-center">
-         <div className="flex flex-col w-fit justify-start items-start">
-            <div className="text-white text-3xl font-medium tracking-normal flex flex-row gap-1">
-               Products<span>🎉</span>
-            </div>
-            <div className="text-violet-200 text-md ">
-               You can details of all the created products
-            </div>
-         </div>
-         <div className="flex flex-row justify-end items-center w-fit gap-4">
+const ProductToolbar = (prosp: any) => {
+   return (
+      <div className="flex flex-row p-6 justify-between items-center  border-b-solid border-b-2 border-gray-100">
+         <div className="flex flex-row gap-3 w-fit h-fit ">
+            <MInput
+               icon={<i className="ri-search-2-line"></i>}
+               rightButtonIcon={<i className="ri-close-line"></i>}
+            />
+            <MButton
+               // variant="outline"
+               icon={<i className="ri-restart-line text-base"></i>}
+            />
+            <ProductSortDropdown />
+
             <ProductExportModal />
-            <ProductAddModal />
+         </div>
+         <div></div>
+      </div>
+   )
+}
+
+const ProductMultiSelectToolbar = (props: any) => {
+   return (
+      <div className="flex flex-row p-6 justify-between items-center bg-violet-100 rounded-t-xl  border-b-solid border-b-2 border-gray-100">
+         <div className="flex flex-row gap-3 w-fit h-fit px-2 text-violet-700 font-medium items-center">
+            <span className="w-9 h-9 flex justify-center items-center rounded-full bg-violet-200">
+               2
+            </span>{' '}
+            Product Selected
+         </div>
+         <div className="flex flex-row gap-3">
+            <MButton
+               icon={<i className="ri-close-line"></i>}
+               modifier="monochrome"
+               variant="white"
+            >
+               Delist
+            </MButton>
+            <MButton
+               icon={<i className="ri-delete-bin-2-line"></i>}
+               modifier="danger"
+               variant="white"
+            >
+               Delete
+            </MButton>
          </div>
       </div>
-      <div className="relative p-32 pt-0 -mt-28 flex flex-col w-screen h-auto justify-center items-center">
-         <div className="w-full bg-white rounded-xl shadow-xl flex flex-col grow ">
-            <div className="flex flex-row p-6 justify-between items-center  border-b-solid border-b-2 border-gray-100">
-               <div className="flex flex-row gap-3 w-fit h-fit ">
-                  <MInput
-                     icon={<i className="ri-search-2-line"></i>}
-                     rightButtonIcon={<i className="ri-close-line"></i>}
-                  />
-                  <ProductSortDropdown />
-                  <MButton icon={<i className="ri-refresh-line"></i>}>
-                     Refresh
-                  </MButton>
+   )
+}
+
+const ProductListing = (props: any) => {
+   return (
+      <div className={classNames('overflow-y-scroll')}>
+         <div className="p-32 pb-44  pt-20 bg-violet-700 bg-gradient-to-b from-violet-700 to-violet-800  w-screen h-fit flex flex-row grow justify-between items-center">
+            <div className="flex flex-col w-fit justify-start items-start">
+               <div className="text-white text-3xl font-medium tracking-normal flex flex-row gap-1">
+                  Products<span>🎉</span>
+               </div>
+               <div className="text-violet-200 text-md ">
+                  You can details of all the created products
                </div>
             </div>
-            <ProductListingTable />
+            <div className="flex flex-row justify-end items-center w-fit gap-4">
+               <ProductAddModal />
+            </div>
          </div>
-         <div className="text-sm text-gray-600 p-9 font-medium">
-            Learn more about{' '}
-            <a className="text-blue-500 underline underline-offset-4" href="#">
-               Product Listing <i className="ri-external-link-line"></i>
-            </a>
+         <div className="relative p-32 pt-0 -mt-28 flex flex-col w-screen h-auto justify-center items-center">
+            <div className="w-full bg-white rounded-xl shadow-lg flex flex-col grow ">
+               <ProductToolbar />
+               <ProductListingTable />
+            </div>
+            <div className="text-sm text-gray-600 p-9 font-medium">
+               Learn more about{' '}
+               <a
+                  className="text-blue-500 underline underline-offset-4"
+                  href="#"
+               >
+                  Product Listing <i className="ri-external-link-line"></i>
+               </a>
+            </div>
          </div>
       </div>
-   </div>
-)
+   )
+}
 export default ProductListing

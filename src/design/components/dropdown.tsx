@@ -45,10 +45,10 @@ const MDropDown = (props: MDropdownProps) => {
                   <Transition
                      className={``}
                      show={open}
-                     enter="transition-opacity duration-155"
+                     enter="transition-opacity duration-95"
                      enterFrom="opacity-0"
                      enterTo="opacity-100"
-                     leave="transition-opacity duration-150"
+                     leave="transition-opacity duration-95"
                      leaveFrom="opacity-100"
                      leaveTo="opacity-0"
                   >

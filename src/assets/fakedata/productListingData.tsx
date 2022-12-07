@@ -93,6 +93,7 @@ export const DATA_COLUMNS: any = [
    {
       Header: '',
       accessor: 'col1',
+      disableSortBy: true,
    },
    {
       Header: 'Product Name',
