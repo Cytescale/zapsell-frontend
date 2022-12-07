@@ -27,7 +27,7 @@ export const ContentSkeleton = (props: any) => {
                   {props.icon}
                </div>
             </div>
-            <div className="text-black-700 text-sm font-medium tracking-wide flex justify-center items-center h-7 text-blue-500">
+            <div className="text-black-700 text-sm font-medium tracking-wide flex justify-center items-center h-7 text-black">
                {props.title}
             </div>
             {/* <div className="flex flex-col gap-0.5">
