@@ -57,9 +57,9 @@ const DescriptionEdit = (props: any) => {
                <div className="h-full w-full flex flex-row gap-4 justify-start">
                   <div className="text-black tracking-wide flex grow flex-row w-full">
                      <MInput
-                        iserror
+                        // iserror
                         label="Display Name"
-                        helperLine="Enter valid name"
+                        // helperLine="Enter valid name"
                         fullWidth
                      />
                   </div>
