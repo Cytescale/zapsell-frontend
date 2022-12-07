@@ -21,7 +21,6 @@ const defaultProps: MButtonProps = {
 }
 
 const MButton = (props: MButtonProps & typeof defaultProps) => {
-   console.log(props.variant)
    return (
       <button
          {...props}

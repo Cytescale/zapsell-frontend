@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import PageHeaderPane from '../../design/components/header'
 import { Menu } from '@headlessui/react'
@@ -10,6 +10,7 @@ import MListBox from '../../design/components/listbox'
 import MDropDown from '../../design/components/dropdown'
 import MSwitch from '../../design/components/switch'
 import MCheckbox from '../../design/components/checkbox'
+import { Transition } from '@headlessui/react'
 
 const ProductAddModal = (props: any) => {
    const [isOpen, setisOpen] = useState(false)
@@ -166,57 +167,85 @@ const ProductSortDropdown = (props: any) => {
    )
 }
 
-const ProductToolbar = (prosp: any) => {
+const ProductToolbar = (props: any) => {
+   const [show, setshow] = useState<boolean>(false)
+   useEffect(() => {
+      if (props.selecProdList && props.selecProdList.length > 0) {
+         setshow(true)
+      } else {
+         setshow(false)
+      }
+   }, [props.selecProdList])
    return (
-      <div className="flex flex-row p-6 justify-between items-center  border-b-solid border-b-2 border-gray-100">
-         <div className="flex flex-row gap-3 w-fit h-fit ">
-            <MInput
-               icon={<i className="ri-search-2-line"></i>}
-               rightButtonIcon={<i className="ri-close-line"></i>}
-            />
-            <MButton
-               // variant="outline"
-               icon={<i className="ri-restart-line text-base"></i>}
-            />
-            <ProductSortDropdown />
-
-            <ProductExportModal />
-         </div>
-         <div></div>
-      </div>
-   )
-}
-
-const ProductMultiSelectToolbar = (props: any) => {
-   return (
-      <div className="flex flex-row p-6 justify-between items-center bg-violet-100 rounded-t-xl  border-b-solid border-b-2 border-gray-100">
-         <div className="flex flex-row gap-3 w-fit h-fit px-2 text-violet-700 font-medium items-center">
-            <span className="w-9 h-9 flex justify-center items-center rounded-full bg-violet-200">
-               2
-            </span>{' '}
-            Product Selected
-         </div>
-         <div className="flex flex-row gap-3">
-            <MButton
-               icon={<i className="ri-close-line"></i>}
-               modifier="monochrome"
-               variant="white"
+      <>
+         {show ? (
+            <Transition
+               show={show}
+               enter="transition-opacity duration-250"
+               enterFrom="opacity-0"
+               enterTo="opacity-100"
+               leave="transition-opacity duration-150"
+               leaveFrom="opacity-100"
+               leaveTo="opacity-0"
+               className="flex flex-row p-6 justify-between items-center bg-violet-100 rounded-t-xl  border-b-solid border-b-2 border-gray-100"
             >
-               Delist
-            </MButton>
-            <MButton
-               icon={<i className="ri-delete-bin-2-line"></i>}
-               modifier="danger"
-               variant="white"
+               <div className="flex flex-row gap-3 w-fit h-fit px-2 text-violet-700 font-medium items-center">
+                  <span className="w-9 h-9 flex justify-center items-center rounded-full bg-violet-200">
+                     {props.selecProdList.length}
+                  </span>{' '}
+                  Product Selected
+               </div>
+               <div className="flex flex-row gap-3">
+                  <MButton
+                     icon={<i className="ri-close-line"></i>}
+                     modifier="monochrome"
+                     variant="white"
+                  >
+                     Delist
+                  </MButton>
+                  <MButton
+                     icon={<i className="ri-delete-bin-2-line"></i>}
+                     modifier="danger"
+                     variant="white"
+                  >
+                     Delete
+                  </MButton>
+               </div>
+            </Transition>
+         ) : (
+            <Transition
+               show={!show}
+               enter="transition-opacity duration-250"
+               enterFrom="opacity-0"
+               enterTo="opacity-100"
+               leave="transition-opacity duration-150"
+               leaveFrom="opacity-100"
+               leaveTo="opacity-0"
+               className="flex flex-row p-6 justify-between items-center  border-b-solid border-b-2 border-gray-100"
             >
-               Delete
-            </MButton>
-         </div>
-      </div>
+               <div className="flex flex-row gap-3 w-fit h-fit ">
+                  <MInput
+                     icon={<i className="ri-search-2-line"></i>}
+                     rightButtonIcon={<i className="ri-close-line"></i>}
+                  />
+                  <MButton
+                     // variant="outline"
+                     icon={<i className="ri-restart-line text-base"></i>}
+                  />
+                  <ProductSortDropdown />
+
+                  <ProductExportModal />
+               </div>
+               <div></div>
+            </Transition>
+         )}
+      </>
    )
 }
 
 const ProductListing = (props: any) => {
+   const [selecProdList, setselecProdList] = useState<Array<any>>([])
+
    return (
       <div className={classNames('overflow-y-scroll')}>
          <div className="p-32 pb-44  pt-20 bg-violet-700 bg-gradient-to-b from-violet-700 to-violet-800  w-screen h-fit flex flex-row grow justify-between items-center">
@@ -234,8 +263,11 @@ const ProductListing = (props: any) => {
          </div>
          <div className="relative p-32 pt-0 -mt-28 flex flex-col w-screen h-auto justify-center items-center">
             <div className="w-full bg-white rounded-xl shadow-lg flex flex-col grow ">
-               <ProductToolbar />
-               <ProductListingTable />
+               <ProductToolbar selecProdList={selecProdList} />
+               <ProductListingTable
+                  setselecProdList={setselecProdList}
+                  selecProdList={selecProdList}
+               />
             </div>
             <div className="text-sm text-gray-600 p-9 font-medium">
                Learn more about{' '}

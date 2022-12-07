@@ -4,7 +4,9 @@ import classNames from 'classnames'
 interface MCheckboxProps
    extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
    size?: 'md' | 'lg' | 'sm'
+   checked?: boolean
    defaultChecked?: boolean
+   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const defaultProps: MCheckboxProps = {
@@ -15,8 +17,10 @@ const MCheckbox = (props: MCheckboxProps & typeof defaultProps) => {
    return (
       <div>
          <input
+            checked={props.checked}
             id="m-checkbox"
             type="checkbox"
+            onChange={props.onChange}
             value=""
             className={classNames(
                'form-check-input',

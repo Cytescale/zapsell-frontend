@@ -76,12 +76,43 @@ const ProductMoreDropdown = (props: any) => {
 }
 
 const TableCellRender = (props: any) => {
+   const [selected, setselected] = useState<boolean>(false)
+
+   useEffect(() => {
+      const index = props.cell.row.index
+      if (props.selecProdList) {
+         setselected(props.selecProdList.includes(index))
+      } else {
+         setselected(false)
+      }
+   }, [props.selecProdList])
+
+   const selectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      let tempArr: Array<any> = []
+      console.log(props.cell)
+      if (props.selecProdList) {
+         tempArr = tempArr.concat(props.selecProdList)
+      }
+      let ind = tempArr.indexOf(props.cell.row.index)
+      if (ind < 0 && !selected) {
+         tempArr.push(props.cell.row.index)
+         props.setselecProdList(tempArr)
+      } else {
+         tempArr.splice(ind, 1)
+         props.setselecProdList(tempArr)
+      }
+      console.log(tempArr)
+   }
    switch (props.cell.column.id) {
       case 'col1':
          return (
             <td className="w-20 h-20">
                <div className="h-full w-full flex flex-col justify-center items-center text-sm font-medium text-gray-400">
-                  <MCheckbox size="md" />
+                  <MCheckbox
+                     size="md"
+                     checked={selected}
+                     onChange={selectHandler}
+                  />
                   {/* {Number(props.cell.row.id) + 1} */}
                </div>
             </td>
@@ -148,7 +179,9 @@ const TableCellRender = (props: any) => {
          return (
             <td className="w-20">
                <div className=" text-black text-sm flex flex-row justify-center items-center">
-                  <ProductMoreDropdown />
+                  {props.selecProdList && props.selecProdList.length <= 0 && (
+                     <ProductMoreDropdown />
+                  )}
                </div>
             </td>
          )
@@ -239,19 +272,24 @@ const ProductTableRender2 = (props: any) => {
             </thead>
             <tbody {...getTableBodyProps()}>
                {page.map((row, i) => {
+                  const selected = props.selecProdList
+                     ? props.selecProdList.includes(row.index)
+                     : false
                   prepareRow(row)
                   return (
                      <tr
                         className={classNames(
                            'h-20 border-t-0 border-solid border-gray-100 ',
                            i % 2 != 0 && 'bg-slate-50',
+                           selected &&
+                              'bg-violet-50 border border-solid border-violet-200 border-l-0 border-r-0',
                         )}
                         onClick={() => {
                            // navigate('/products/productname/edit')
                         }}
                      >
                         {row.cells.map((cell) => {
-                           return <TableCellRender cell={cell} />
+                           return <TableCellRender {...props} cell={cell} />
                         })}
                      </tr>
                   )
@@ -321,7 +359,7 @@ const ProductListingTable: any = (props: any) => {
    return (
       <>
          <div className="">
-            <ProductTableRender2 />
+            <ProductTableRender2 {...props} />
          </div>
       </>
    )
