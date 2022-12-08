@@ -83,9 +83,9 @@ const ProductExportModal = (props: any) => {
    return (
       <>
          <MButton
-            // variant="outline"
+            variant="white"
             onClick={() => setisOpen(true)}
-            icon={<i className="ri-file-chart-line"></i>}
+            // icon={<i className="ri-file-chart-line"></i>}
          >
             Export
          </MButton>
@@ -144,8 +144,8 @@ const ProductSortDropdown = (props: any) => {
    return (
       <MDropDown
          dropButtom={
-            <MButton icon={<i className="ri-sort-asc"></i>}>
-               Sort by (a-z)
+            <MButton variant="white">
+               <span className="text-gray-400">Sort by</span> (a-z)
             </MButton>
          }
       >
@@ -169,6 +169,7 @@ const ProductSortDropdown = (props: any) => {
 
 const ProductToolbar = (props: any) => {
    const [show, setshow] = useState<boolean>(false)
+
    useEffect(() => {
       if (props.selecProdList && props.selecProdList.length > 0) {
          setshow(true)
@@ -181,35 +182,43 @@ const ProductToolbar = (props: any) => {
          {show ? (
             <Transition
                show={show}
-               enter="transition-opacity duration-250"
+               enter="transition-opacity duration-1000"
                enterFrom="opacity-0"
                enterTo="opacity-100"
                leave="transition-opacity duration-150"
                leaveFrom="opacity-100"
                leaveTo="opacity-0"
-               className="flex flex-row p-6 justify-between items-center bg-violet-100 rounded-t-xl  border-b-solid border-b-2 border-gray-100"
+               className="flex flex-row p-5 justify-between items-center bg-violet-50 rounded-t-xl  border-b-solid border-b-2 border-gray-100"
             >
-               <div className="flex flex-row gap-3 w-fit h-fit px-2 text-violet-700 font-medium items-center">
-                  <span className="w-9 h-9 flex justify-center items-center rounded-full bg-violet-200">
+               <div className="flex flex-row gap-3 w-fit h-fit px-2 text-sm text-violet-700 font-medium items-center">
+                  <span className="w-9 h-9 text-sm flex justify-center items-center rounded-full bg-violet-200">
                      {props.selecProdList.length}
                   </span>{' '}
                   Product Selected
+                  <MButton
+                     modifier="plain"
+                     variant="transparent"
+                     size="xs"
+                     icon={<i className="ri-add-line"></i>}
+                  >
+                     Select all products
+                  </MButton>
                </div>
-               <div className="flex flex-row gap-3">
-                  <MButton
-                     icon={<i className="ri-close-line"></i>}
-                     modifier="monochrome"
-                     variant="white"
+               <div className="flex flex-row gap-0 h-9">
+                  <button
+                     onClick={() => {
+                        props.setselecProdList([])
+                     }}
+                     className="text-sm font-medium  text-violet-800 hover:bg-violet-100 px-3 rounded-md  "
                   >
-                     Delist
-                  </MButton>
-                  <MButton
-                     icon={<i className="ri-delete-bin-2-line"></i>}
-                     modifier="danger"
-                     variant="white"
-                  >
+                     Deselect
+                  </button>
+                  <button className="text-sm font-medium  text-violet-800 hover:bg-violet-100 px-3 rounded-md  ">
+                     Unpublish
+                  </button>
+                  <button className="text-sm font-medium  text-red-600 hover:bg-violet-100 px-3 rounded-md  ">
                      Delete
-                  </MButton>
+                  </button>
                </div>
             </Transition>
          ) : (
@@ -221,7 +230,7 @@ const ProductToolbar = (props: any) => {
                leave="transition-opacity duration-150"
                leaveFrom="opacity-100"
                leaveTo="opacity-0"
-               className="flex flex-row p-6 justify-between items-center  border-b-solid border-b-2 border-gray-100"
+               className="flex flex-row p-5 justify-between items-center  border-b-solid border-b-2 border-gray-100"
             >
                <div className="flex flex-row gap-3 w-fit h-fit ">
                   <MInput
@@ -229,7 +238,8 @@ const ProductToolbar = (props: any) => {
                      rightButtonIcon={<i className="ri-close-line"></i>}
                   />
                   <MButton
-                     // variant="outline"
+                     modifier="monochrome"
+                     variant="white"
                      icon={<i className="ri-restart-line text-base"></i>}
                   />
                   <ProductSortDropdown />
@@ -263,7 +273,10 @@ const ProductListing = (props: any) => {
          </div>
          <div className="relative p-32 pt-0 -mt-28 flex flex-col w-screen h-auto justify-center items-center">
             <div className="w-full bg-white rounded-xl shadow-lg flex flex-col grow ">
-               <ProductToolbar selecProdList={selecProdList} />
+               <ProductToolbar
+                  selecProdList={selecProdList}
+                  setselecProdList={setselecProdList}
+               />
                <ProductListingTable
                   setselecProdList={setselecProdList}
                   selecProdList={selecProdList}

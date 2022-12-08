@@ -50,7 +50,7 @@ const DescriptionEdit = (props: any) => {
          <div className="flex flex-col gap-5   w-2/3">
             {/* <MDropzone /> */}
             <ContentSkeleton
-               banner={logoutBanner}
+               // banner={logoutBanner}
                icon={<i className="ri-file-line"></i>}
                title={'Product Description'}
                desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."
@@ -82,6 +82,11 @@ const DescriptionEdit = (props: any) => {
                title={'Media'}
                desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             >
+               <MDialog
+                  isdismissable={false}
+                  fullwidth
+                  header="First image is your thumbnail of product"
+               ></MDialog>
                <MDropzone />
             </ContentSkeleton>
             <ContentSkeleton

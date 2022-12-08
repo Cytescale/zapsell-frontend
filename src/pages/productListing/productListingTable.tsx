@@ -53,6 +53,17 @@ const ProductMoreDropdown = (props: any) => {
                   href="/account-settings"
                >
                   <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
+                     <i className="ri-file-copy-line text-sm  flex justify-center items-center h-max"></i>
+                     Duplicate
+                  </div>
+               </a>
+            </Menu.Item>
+            <Menu.Item>
+               <a
+                  className={`w-full p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
+                  href="/account-settings"
+               >
+                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
                      <i className="ri-edit-circle-line text-sm  flex justify-center items-center h-max"></i>
                      Description
                   </div>
@@ -85,7 +96,7 @@ const TableCellRender = (props: any) => {
       } else {
          setselected(false)
       }
-   }, [props.selecProdList])
+   }, [props.selecProdList, props.page])
 
    const selectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       let tempArr: Array<any> = []
@@ -106,7 +117,7 @@ const TableCellRender = (props: any) => {
    switch (props.cell.column.id) {
       case 'col1':
          return (
-            <td className="w-20 h-20">
+            <td className="w-20 h-full">
                <div className="h-full w-full flex flex-col justify-center items-center text-sm font-medium text-gray-400">
                   <MCheckbox
                      size="md"
@@ -121,8 +132,8 @@ const TableCellRender = (props: any) => {
          return (
             <td className="h-full ">
                <a className="" href="/products/productname/edit#description">
-                  <div className="text-black text-sm flex flex-row gap-5  justify-start items-center ">
-                     <div className="w-12 h-12 rounded-md bg-gray-100"></div>
+                  <div className="text-black text-sm flex font-medium flex-row gap-5  justify-start items-center ">
+                     {/* <div className="w-12 h-12 rounded-md bg-gray-100"></div> */}
                      {props.cell.render('Cell')}
                   </div>
                </a>
@@ -144,7 +155,7 @@ const TableCellRender = (props: any) => {
       case 'inventory':
          return (
             <td className="px-8">
-               <div className=" text-black text-sm flex flex-row justify-center items-center">
+               <div className=" text-black text-sm flex flex-row justify-end items-center">
                   {props.cell.render('Cell')}
                </div>
             </td>
@@ -152,7 +163,7 @@ const TableCellRender = (props: any) => {
       case 'sales':
          return (
             <td className="px-8">
-               <div className=" text-black text-sm flex flex-row justify-center items-center">
+               <div className=" text-black text-sm flex flex-row justify-end items-center">
                   {props.cell.render('Cell')}
                </div>
             </td>
@@ -160,7 +171,7 @@ const TableCellRender = (props: any) => {
       case 'revenue':
          return (
             <td className="px-8">
-               <div className=" text-black text-sm flex flex-row justify-center items-center">
+               <div className=" text-black text-sm flex flex-row justify-end items-center">
                   {props.cell.render('Cell')}
                </div>
             </td>
@@ -179,9 +190,9 @@ const TableCellRender = (props: any) => {
          return (
             <td className="w-20">
                <div className=" text-black text-sm flex flex-row justify-center items-center">
-                  {props.selecProdList && props.selecProdList.length <= 0 && (
-                     <ProductMoreDropdown />
-                  )}
+                  {props.hover &&
+                     props.selecProdList &&
+                     props.selecProdList.length <= 0 && <ProductMoreDropdown />}
                </div>
             </td>
          )
@@ -190,6 +201,74 @@ const TableCellRender = (props: any) => {
          return <td>Null</td>
       }
    }
+}
+
+const TypeRender = (props: any) => {
+   switch (props.column.type) {
+      case 'string':
+         return (
+            <span className="px-1 text-sm text-gray-400">
+               <i className="ri-text"></i>
+            </span>
+         )
+         break
+      case 'link':
+         return (
+            <span className="px-1 text-sm text-gray-400">
+               <i className="ri-link"></i>
+            </span>
+         )
+         break
+      case 'number':
+         return (
+            <span className="px-1 text-sm text-gray-400">
+               <i className="ri-hashtag"></i>
+            </span>
+         )
+         break
+      default:
+         return <></>
+   }
+}
+
+const TableRowRender = (props: any) => {
+   const [selected, setselected] = useState<boolean>(false)
+   const [hover, sethover] = useState<boolean>(false)
+
+   useEffect(() => {
+      setselected(
+         props.selecProdList
+            ? props.selecProdList.includes(props.row.index)
+            : false,
+      )
+   }, [props.selecProdList, props.row])
+
+   return (
+      <tr
+         onMouseOver={() => sethover(true)}
+         onMouseLeave={() => sethover(false)}
+         className={classNames(
+            'h-16 border-t-0 border-solid border-gray-100 ',
+            props.i % 2 != 0 && 'bg-slate-50',
+            selected &&
+               'bg-violet-50 border border-solid border-violet-200 border-l-0 border-r-0',
+         )}
+         onClick={() => {
+            // navigate('/products/productname/edit')
+         }}
+      >
+         {props.row.cells.map((cell: any) => {
+            return (
+               <TableCellRender
+                  {...props}
+                  hover={hover}
+                  cell={cell}
+                  page={props.page}
+               />
+            )
+         })}
+      </tr>
+   )
 }
 
 const ProductTableRender2 = (props: any) => {
@@ -220,6 +299,7 @@ const ProductTableRender2 = (props: any) => {
    useEffect(() => {
       setPageSize(5)
    }, [])
+
    return (
       <>
          <table
@@ -235,68 +315,54 @@ const ProductTableRender2 = (props: any) => {
                      className="h-12 w-full fllex flex-row border border-solid border-gray-200 border-t-0 border-l-0 border-r-0 "
                      {...headerGroup.getHeaderGroupProps()}
                   >
-                     {headerGroup.headers.map((column: any) => (
-                        <th
-                           className=""
-                           {...column.getHeaderProps(
-                              column.getSortByToggleProps(),
-                           )}
-                        >
+                     {headerGroup.headers.map((column: any) => {
+                        console.log(column.type)
+                        return (
                            <th
-                              className={classNames(
-                                 `text-sm font-medium   text-black tracking-wide flex flex-row items-center justify-center `,
-                                 column.isSorted &&
-                                    column.canSort &&
-                                    'text-blue-600',
-                                 column.canSort && ' hover:text-blue-600',
+                              className=""
+                              {...column.getHeaderProps(
+                                 column.getSortByToggleProps(),
                               )}
                            >
-                              {column.render('Header')}
-
-                              <div className="">
-                                 {column.isSorted ? (
-                                    column.isSortedDesc ? (
-                                       <i className="ri-arrow-down-line"></i>
-                                    ) : (
-                                       <i className="ri-arrow-up-line"></i>
-                                    )
-                                 ) : (
-                                    ''
+                              <th
+                                 className={classNames(
+                                    `text-sm font-medium   text-black flex flex-row items-center justify-center `,
+                                    column.isSorted &&
+                                       column.canSort &&
+                                       'text-blue-600',
+                                    column.canSort && ' hover:text-blue-600',
                                  )}
-                              </div>
+                              >
+                                 <TypeRender column={column} />
+                                 {column.render('Header')}
+                                 <div className="">
+                                    {column.isSorted ? (
+                                       column.isSortedDesc ? (
+                                          <i className="ri-arrow-down-line"></i>
+                                       ) : (
+                                          <i className="ri-arrow-up-line"></i>
+                                       )
+                                    ) : (
+                                       ''
+                                    )}
+                                 </div>
+                              </th>
                            </th>
-                        </th>
-                     ))}
+                        )
+                     })}
                   </tr>
                ))}
             </thead>
             <tbody {...getTableBodyProps()}>
                {page.map((row, i) => {
-                  const selected = props.selecProdList
-                     ? props.selecProdList.includes(row.index)
-                     : false
                   prepareRow(row)
                   return (
-                     <tr
-                        className={classNames(
-                           'h-20 border-t-0 border-solid border-gray-100 ',
-                           i % 2 != 0 && 'bg-slate-50',
-                           selected &&
-                              'bg-violet-50 border border-solid border-violet-200 border-l-0 border-r-0',
-                        )}
-                        onClick={() => {
-                           // navigate('/products/productname/edit')
-                        }}
-                     >
-                        {row.cells.map((cell) => {
-                           return <TableCellRender {...props} cell={cell} />
-                        })}
-                     </tr>
+                     <TableRowRender {...props} row={row} page={page} i={i} />
                   )
                })}
             </tbody>
          </table>
-         <div className="flex flex-row justify-between w-full p-6 border-t-2 border-solid border-gray-100">
+         <div className="flex flex-row justify-between w-full p-5 border-t-2 border-solid border-gray-100">
             <div className="flex flex-row gap-1"></div>
             <div className="flex flex-row gap-0 justify-center items-center">
                <MDropDown

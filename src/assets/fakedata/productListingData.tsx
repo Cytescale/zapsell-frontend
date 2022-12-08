@@ -99,33 +99,40 @@ export const DATA_COLUMNS: any = [
       Header: 'Product Name',
       accessor: 'product',
       disableSortBy: true,
+      type: 'string',
    },
    {
       Header: 'Purchase Link',
       accessor: 'link',
       disableSortBy: true,
+      type: 'link',
    },
    {
       Header: 'Status',
       accessor: 'status',
       disableSortBy: true,
+      type: 'mesc',
    },
    {
       Header: 'Inventory',
       accessor: 'inventory',
+      type: 'number',
    },
    {
       Header: 'Sales',
       accessor: 'sales',
+      type: 'number',
    },
    {
       Header: 'Revenue',
       accessor: 'revenue',
+      type: 'number',
    },
    {
       Header: '',
       accessor: 'opt',
       disableSortBy: true,
+      type: 'mesc',
    },
 ]
 

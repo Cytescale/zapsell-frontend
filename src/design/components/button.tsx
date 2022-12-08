@@ -11,7 +11,7 @@ export interface MButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    size?: 'md' | 'xl' | 'xs'
    textAlign?: 'left' | 'center' | 'right'
    rounded?: 'nm' | 'full' | 'none'
-
+   borderless?: boolean
    loading?: boolean
    iserror?: boolean
 }
@@ -31,21 +31,24 @@ const MButton = (props: MButtonProps & typeof defaultProps) => {
             'flex flex-row gap-1 justify-center items-center',
             'text-sm',
             'rounded-md',
+
             props.icon && !props.children && !props.rightIcon && 'w-9',
             props.fullWidth ? 'w-full' : 'w-fit',
             props.children ? 'px-5' : 'px-4',
             props.icon && props.children && 'pl-4',
             props.variant == 'normal' &&
-               'text-gray-800 bg-gray-100 hover:bg-gray-200',
+               'text-slate-700 bg-gray-100 hover:bg-gray-200',
             props.variant == 'filled' && 'bg-emerald-100  hover:bg-emerald-300',
             props.variant == 'transparent' && 'bg-transparent ',
-            props.variant == 'white' && 'bg-white hover:bg-gray-200',
+            props.variant == 'white' &&
+               'border border-solid  border-gray-300 bg-white hover:bg-gray-200',
             props.variant == 'outline' &&
                'bg-transparent border border-solid  border-gray-300 hover:bg-gray-100',
             props.modifier == 'monochrome' && 'text-black hover:bg-slate-100',
             props.modifier == 'plain' &&
                'text-blue-600 hover:bg-blue-100 hover:border-blue-100',
             props.modifier == 'danger' && 'text-red-600 hover:bg-red-100',
+            props.borderless && 'border-none',
             props.iserror && 'border-red-500',
             props.size == 'xs' && 'text-xs h-8 px-2 ',
             props.size == 'md' && 'text-md h-10 px-4',

@@ -80,13 +80,13 @@ const ProfileDropdown = (props: any) => {
       <>
          <MDropDown
             dropButtom={
-               <button className="flex flex-row gap-2 items-center hover:bg-violet-600 rounded-md pr-3">
+               <button className="flex flex-row gap-2 items-center  rounded-md pr-3">
                   <div className="flex flex-col bg-violet-600 justify-center items-center text-white text-md w-8 h-8 rounded-full ">
                      {/* <i className="ri-user-line"></i> */}A
                   </div>
-                  <div className="flex flex-row justify-center items-center text-white tracking-wide font-medium text-sm">
+                  {/* <div className="flex flex-row justify-center items-center text-white tracking-wide font-medium text-sm">
                      Placeholder
-                  </div>
+                  </div> */}
                </button>
             }
          >
@@ -174,20 +174,21 @@ const HeaderRightCont = (props: any) => {
       <>
          <button
             className={classNames(
-               'flex flex-col h-8 w-8 bg-transparent text-violet-100 justify-center items-center text-xl rounded-full',
+               'flex flex-col h-8 w-8 bg-transparent text-violet-300 justify-center items-center text-xl rounded-full mr-2',
             )}
          >
-            <i className="ri-question-mark   "></i>
-         </button>
-         <button
-            className={classNames(
-               'flex flex-row gap-2 h-8 w-8  font-medium bg-violet-600 text-violet-100 justify-center items-center text-xl px-4 rounded-md hover:bg-violet-500',
-            )}
-         >
-            <i className="ri-add-line"></i>
-            {/* Add Product */}
+            <i className="ri-question-fill"></i>
+            {/* <i className="ri-question-mark   "></i> */}
          </button>
          <ProfileDropdown />
+         <button
+            className={classNames(
+               'flex flex-row gap-2 h-8   font-medium bg-violet-600 text-violet-100 justify-center items-center text-sm px-4 rounded-md hover:bg-violet-500',
+            )}
+         >
+            {/* <i className="ri-add-line"></i> */}
+            Add Product
+         </button>
       </>
    )
 }
@@ -257,7 +258,7 @@ const PageHeaderPane = (props: any) => {
                   })}
                </div>
             </div>
-            <div className="flex flex-row w-fit h-full gap-3 items-center justify-end ">
+            <div className="flex flex-row w-fit h-full gap-0 items-center justify-end ">
                <HeaderRightCont />
             </div>
          </div>
