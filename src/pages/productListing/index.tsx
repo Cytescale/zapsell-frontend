@@ -263,7 +263,7 @@ const ProductListing = (props: any) => {
                <div className="text-white text-3xl font-medium tracking-normal flex flex-row gap-1">
                   Products<span>🎉</span>
                </div>
-               <div className="text-violet-200 text-md ">
+               <div className="text-violet-200 text-sm ">
                   You can details of all the created products
                </div>
             </div>
