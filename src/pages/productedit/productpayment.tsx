@@ -44,7 +44,7 @@ const PaymentEdit = (props: any) => {
       >
          <div className="flex flex-col gap-5 w-2/3">
             <ContentSkeleton
-               banner={moneyBanner}
+               // banner={moneyBanner}
                icon={<i className="ri-file-line"></i>}
                title={'Checkout'}
                desc=" Lorem ipsum dolor sit amet, consectetur adipiscing elit."

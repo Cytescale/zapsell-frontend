@@ -81,9 +81,9 @@ const ProductEdit = (props: any) => {
          )}
       >
          <div className=" relative flex flex-row  justify-between items-center h-fit w-screen pt-8 pb-0 px-64 border  border-t-0 border-solid border-slate-300">
-            <div className="flex flex-col w-fit gap-1  pb-0">
+            <div className="flex flex-col w-fit gap-1.5  pb-0">
                {/* <MBreadcrumbs /> */}
-               <div className="text-black font-semibold text-2xl tracking-tight flex flex-row items-center gap-2">
+               <div className="text-black font-semibold text-xl tracking-tight flex flex-row items-center gap-2">
                   Product Edit
                   <MBadge>Active</MBadge>
                   <div className="flex flex-col text-xs text-gray-600">
@@ -95,6 +95,7 @@ const ProductEdit = (props: any) => {
             <div className="flex flex-row gap-4 s">
                <MButton
                   variant="white"
+                  borderless
                   modifier="monochrome"
                   icon={<i className="ri-save-line"></i>}
                >
@@ -102,12 +103,13 @@ const ProductEdit = (props: any) => {
                </MButton>
                <MButton
                   variant="white"
+                  borderless
                   modifier="monochrome"
                   icon={<i className="ri-external-link-line"></i>}
                >
                   Preview
                </MButton>
-               <MButton variant="white" modifier="danger">
+               <MButton borderless variant="white" modifier="danger">
                   Unlist
                </MButton>
             </div>

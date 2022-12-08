@@ -145,7 +145,7 @@ const ProductSortDropdown = (props: any) => {
       <MDropDown
          dropButtom={
             <MButton variant="white">
-               <span className="text-gray-400">Sort by</span> (a-z)
+               <span className="text-gray-400">Sort by</span> a-z
             </MButton>
          }
       >
@@ -258,7 +258,7 @@ const ProductListing = (props: any) => {
 
    return (
       <div className={classNames('overflow-y-scroll')}>
-         <div className="p-32 pb-44  pt-20 bg-violet-700 bg-gradient-to-b from-violet-700 to-violet-800  w-screen h-fit flex flex-row grow justify-between items-center">
+         <div className="p-32 pb-44  pt-16 bg-violet-700 bg-gradient-to-b from-violet-700 to-violet-800  w-screen h-fit flex flex-row grow justify-between items-center">
             <div className="flex flex-col w-fit justify-start items-start">
                <div className="text-white text-3xl font-medium tracking-normal flex flex-row gap-1">
                   Products<span>🎉</span>
@@ -271,7 +271,7 @@ const ProductListing = (props: any) => {
                <ProductAddModal />
             </div>
          </div>
-         <div className="relative p-32 pt-0 -mt-28 flex flex-col w-screen h-auto justify-center items-center">
+         <div className="relative p-32 pt-0 -mt-32 flex flex-col w-screen h-auto justify-center items-center">
             <div className="w-full bg-white rounded-xl shadow-lg flex flex-col grow ">
                <ProductToolbar
                   selecProdList={selecProdList}

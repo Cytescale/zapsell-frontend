@@ -112,7 +112,7 @@ const AppearanceEdit = (props: any) => {
                                        'border-2 border-solid border-violet-600',
                                  )}
                               >
-                                 <div className=" h-40  flex flex-row bg-gray-300  bg-gradient-to-b from-gray-500 to-gray-600   rounded-t-xl m-0"></div>
+                                 <div className=" h-40  flex flex-row bg-gray-300  bg-gradient-to-b from-gray-200 to-gray-200   rounded-t-xl m-0"></div>
                                  <div className="relative h-auto p-3  gap-2 text-sm text-black font-medium flex flex-row justify-start items-center">
                                     <div>{e.name}</div>
                                     {themeIdSelec == i && (
