@@ -64,7 +64,7 @@ const MInput = (props: MInputProps) => {
          {props.label && (
             <div
                className={classNames(
-                  'font-semibold',
+                  'font-medium',
                   'tracking-normal',
                   'text-sm',
                   'text-gray-700',
@@ -76,7 +76,7 @@ const MInput = (props: MInputProps) => {
 
          <div
             className={classNames(
-               'h-9',
+               'h-10',
                'flex',
                'flex-row',
                // 'gap-1',

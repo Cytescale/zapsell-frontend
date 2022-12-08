@@ -333,7 +333,7 @@ const ProductTableRender2 = (props: any) => {
                                     column.canSort && ' hover:text-blue-600',
                                  )}
                               >
-                                 <TypeRender column={column} />
+                                 {/* <TypeRender column={column} /> */}
                                  {column.render('Header')}
                                  <div className="">
                                     {column.isSorted ? (

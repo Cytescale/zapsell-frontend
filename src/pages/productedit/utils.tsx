@@ -36,7 +36,7 @@ export const ContentSkeleton = (props: any) => {
                </div> 
             </div> */}
          </div>
-         <div className="p-7 flex flex-col items-center gap-6">
+         <div className="p-7 flex flex-col items-center gap-5">
             {props.children}
          </div>
       </div>

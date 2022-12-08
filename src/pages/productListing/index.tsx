@@ -25,13 +25,14 @@ const ProductAddModal = (props: any) => {
 
    return (
       <>
-         <MButton
+         <button
             onClick={() => setisOpen(true)}
-            icon={<i className="ri-add-line"></i>}
-            size={'md'}
+            className={
+               'bg-white text-base px-5 py-2 rounded-md font-medium shadow hover:bg-gray-100 text-violet-800'
+            }
          >
             Add Product
-         </MButton>
+         </button>
          <MModal isOpen={isOpen} setIsOpen={setisOpen}>
             <div className="flex flex-col bg-white shadow-xl rounded-md w-96 p-8">
                <div className="flex flex-row w-full justify-start items-center ">
@@ -46,7 +47,7 @@ const ProductAddModal = (props: any) => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nullam id libero vulputate.
                </div>
-               <div className="flex flex-col pt-5 gap-3">
+               <div className="flex flex-col pt-5 gap-4">
                   <MInput fullWidth label="Name"></MInput>
                   <MInput
                      iserror
@@ -230,9 +231,9 @@ const ProductToolbar = (props: any) => {
                leave="transition-opacity duration-150"
                leaveFrom="opacity-100"
                leaveTo="opacity-0"
-               className="flex flex-row p-5 justify-between items-center  border-b-solid border-b-2 border-gray-100"
+               className="flex flex-row p-6 justify-between items-center  border-b-solid border-b-2 border-gray-100"
             >
-               <div className="flex flex-row gap-3 w-fit h-fit ">
+               <div className="flex flex-row gap-3 w-full h-fit ">
                   <MInput
                      icon={<i className="ri-search-2-line"></i>}
                      rightButtonIcon={<i className="ri-close-line"></i>}
@@ -243,7 +244,49 @@ const ProductToolbar = (props: any) => {
                      icon={<i className="ri-restart-line text-base"></i>}
                   />
                   <ProductSortDropdown />
-
+                  <MButton variant="white">Filter</MButton>{' '}
+                  <MDropDown
+                     dropButtom={
+                        <MButton
+                           variant="outline"
+                           modifier="monochrome"
+                           rightIcon={<i className="ri-arrow-down-s-line"></i>}
+                        >
+                           Status
+                        </MButton>
+                     }
+                  >
+                     <Menu.Item>
+                        <a
+                           className={`w-40 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
+                           href="/account-settings"
+                        >
+                           <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
+                              Active
+                           </div>
+                        </a>
+                     </Menu.Item>
+                     <Menu.Item>
+                        <a
+                           className={`w-40 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
+                           href="/account-settings"
+                        >
+                           <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
+                              Drafted
+                           </div>
+                        </a>
+                     </Menu.Item>
+                     <Menu.Item>
+                        <a
+                           className={`w-40 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
+                           href="/account-settings"
+                        >
+                           <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
+                              Unpublished
+                           </div>
+                        </a>
+                     </Menu.Item>
+                  </MDropDown>
                   <ProductExportModal />
                </div>
                <div></div>

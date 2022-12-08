@@ -39,7 +39,8 @@ const DescriptionEdit = (props: any) => {
    return (
       <Transition
          show={show}
-         enter="transition-opacity duration-190 "
+         appear={true}
+         enter="transition-opacity duration-300 "
          enterFrom="opacity-0"
          enterTo="opacity-100"
          leave="transition-opacity duration-150"

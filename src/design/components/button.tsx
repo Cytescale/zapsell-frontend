@@ -26,13 +26,12 @@ const MButton = (props: MButtonProps & typeof defaultProps) => {
          {...props}
          className={classNames(
             'relative',
-            'h-9',
-            'font-medium',
+            'h-10',
+            'font-semibold',
             'flex flex-row gap-1 justify-center items-center',
             'text-sm',
             'rounded-md',
-
-            props.icon && !props.children && !props.rightIcon && 'w-9',
+            props.icon && !props.children && !props.rightIcon && 'w-10',
             props.fullWidth ? 'w-full' : 'w-fit',
             props.children ? 'px-5' : 'px-4',
             props.icon && props.children && 'pl-4',
