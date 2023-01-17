@@ -8,19 +8,16 @@ import {
    Navigate,
 } from 'react-router-dom'
 import { useState } from 'react'
-
+import Sidebar from '../../design/components/sidebar'
 import TestPage from '../../design'
-import ProductListing from '../productListing'
-import ProductEarning from '../productearning'
-import ProductEdit from '../productedit'
-import PageHeaderPane from '../../design/components/header'
-import Settings from '../settings'
+import RunnersScreen from '../runners'
+import ProfileScreen from '../profile'
+import EditorScreen from '../editor'
 
 const ShellComp = (props: any) => {
    return (
       <AppBaseCont>
-         <PageHeaderPane />
-
+         <Sidebar />
          <AppInnerCont>
             <AppPageCont>{props.children}</AppPageCont>
          </AppInnerCont>
@@ -34,46 +31,46 @@ const MRouter = (props: any) => {
          <Router>
             <Routes>
                <Route
-                  path="/products"
+                  path="/runners"
                   element={
                      <ShellComp>
-                        <ProductListing />
+                        <RunnersScreen />
                      </ShellComp>
                   }
                />
                <Route
-                  path="/earnings"
+                  path="/editor"
                   element={
                      <ShellComp>
-                        <ProductEarning />
+                        <EditorScreen />
                      </ShellComp>
                   }
                />
                <Route
-                  path="/products/productname/edit"
+                  path="/profile"
                   element={
                      <ShellComp>
-                        <ProductEdit />
+                        <ProfileScreen />
                      </ShellComp>
                   }
                />
                <Route
-                  path="/settings/profile"
+                  path="/profile"
                   element={
                      <ShellComp>
-                        <Settings />
+                        <ProfileScreen />
                      </ShellComp>
                   }
                />
                <Route
-                  path="/uitest"
+                  path="/editor"
                   element={
                      <ShellComp>
                         <TestPage />
                      </ShellComp>
                   }
                />
-               <Route path="/" element={<Navigate to="/products" />} />
+               <Route path="/" element={<Navigate to="/editor" />} />
             </Routes>
          </Router>
       </>

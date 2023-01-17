@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Copse&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700;6..72,800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,7 +17,7 @@ body {
    -moz-osx-font-smoothing: grayscale;
    user-select: none;
    overflow-x: hidden;
-   background-color: #f9f9f9;
+   /* background-color: #f9f9f9; */
    display: flex;
    justify-content: center;
    align-items: center;

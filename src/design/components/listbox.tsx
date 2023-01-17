@@ -34,10 +34,11 @@ const MListBox = (props: any) => {
          {props.label && (
             <div
                className={classNames(
-                  'font-semibold',
-                  'tracking-normal',
+                  'font-medium',
+                  'tracking-wide',
                   'text-sm',
-                  'text-gray-700',
+                  'text-gray-900',
+                  'px-1',
                )}
             >
                {props.label}
@@ -48,6 +49,7 @@ const MListBox = (props: any) => {
                <Listbox.Button className={'flex flex-col grow w-full'}>
                   <MButton
                      {...props}
+                     textAlign="left"  
                      fullWidth={props.fullWidth}
                      iserror={props.iserror}
                      rightIcon={<i className="ri-arrow-down-s-line"></i>}

@@ -12,9 +12,12 @@ export interface MButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    textAlign?: 'left' | 'center' | 'right'
    rounded?: 'nm' | 'full' | 'none'
    borderless?: boolean
-   loading?: boolean
+loading?: boolean
    iserror?: boolean
 }
+
+
+
 
 const defaultProps: MButtonProps = {
    variant: 'normal',

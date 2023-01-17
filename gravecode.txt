@@ -1,0 +1,91 @@
+
+const ProductExportModal = (props: any) => {
+   const [isOpen, setisOpen] = useState(false)
+
+   return (
+      <>
+         <MButton
+            variant="normal"
+            onClick={() => setisOpen(true)}
+            icon={<i className="ri-upload-line"></i>}
+            // icon={<i className="ri-file-chart-line"></i>}
+         >
+            Export
+         </MButton>
+         <MModal isOpen={isOpen} setIsOpen={setisOpen}>
+            <div className="flex flex-col bg-white shadow-xl rounded-md w-96 p-8">
+               <div className="flex flex-row w-full justify-center items-center ">
+                  <div className="flex flex-col w-12 h-12 bg-blue-100 justify-center items-center text-blue-500 rounded-full text-lg">
+                     <i className="ri-file-chart-line"></i>
+                  </div>
+               </div>
+               <div className="flex flex-row grow justify-center items-center text-black font-medium text-md pt-3">
+                  Export Product Data
+               </div>
+               <div className="flex flex-row grow text-center justify-center items-center text-gray-700 font-normal text-sm pt-2">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam id libero vulputate.
+               </div>
+               <div className="flex flex-row grow justify-center items-center pt-5 gap-2">
+                  <MButton
+                     icon={<i className="ri-close-line"></i>}
+                     onClick={() => {
+                        setisOpen(false)
+                     }}
+                     fullWidth
+                  >
+                     Cancel
+                  </MButton>
+                  <MButton
+                     variant="outline"
+                     modifier="plain"
+                     icon={<i className="ri-download-line"></i>}
+                     fullWidth
+                  >
+                     Download
+                  </MButton>
+               </div>
+            </div>
+         </MModal>
+      </>
+   )
+}
+
+const ProductSortDropdown = (props: any) => {
+   const SortArr = [
+      'a-z',
+      'z-a',
+      'Newest Product',
+      'Oldest Product',
+      'Most Sold Product',
+      'Least Sold Product',
+      'Least Sold Product',
+      'Newest Updated',
+      'Oldest Updated',
+   ]
+
+   return (
+      <MDropDown
+         dropButtom={
+            <MButton variant="normal">
+               <span className="text-gray-400">Sort by</span> a-z
+            </MButton>
+         }
+      >
+         {SortArr.map((e) => {
+            return (
+               <Menu.Item>
+                  <button
+                     className={`w-56 p-1.5 pl-4 h-9 text-sm text-black hover:bg-slate-100`}
+                  >
+                     <div className="flex flex-row gap-3 text-sm items-center p-0 tracking-wide ">
+                        <MCheckbox />
+                        {e}
+                     </div>
+                  </button>
+               </Menu.Item>
+            )
+         })}
+      </MDropDown>
+   )
+}

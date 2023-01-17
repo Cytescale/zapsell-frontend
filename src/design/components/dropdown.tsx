@@ -29,10 +29,11 @@ const MDropDown = (props: MDropdownProps) => {
          {props.label && (
             <div
                className={classNames(
-                  'font-semibold',
-                  'tracking-normal',
+                  'font-medium',
+                  'tracking-wide',
                   'text-sm',
-                  'text-gray-700',
+                  'text-gray-900',
+                  'px-1',
                )}
             >
                {props.label}
@@ -52,7 +53,7 @@ const MDropDown = (props: MDropdownProps) => {
                      leaveFrom="opacity-100"
                      leaveTo="opacity-0"
                   >
-                     <Menu.Items className="absolute origin-top-right right-0 mt-2 w-fit divide-y pb-1 pt-1 divide-gray-100 rounded-lg bg-white shadow-xl border border-solid border-gray-100  z-50 ">
+                     <Menu.Items className="absolute origin-top-right right-0 mt-2 w-fit divide-y pb-2 pt-2 divide-gray-100 rounded-xl bg-white shadow-xl border border-solid border-gray-200  z-50 ">
                         <div className="flex flex-col">{props.children}</div>
                      </Menu.Items>
                   </Transition>

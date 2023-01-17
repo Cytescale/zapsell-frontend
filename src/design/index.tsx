@@ -15,7 +15,7 @@ const menu = ['Detaieels', 'Edit', 'Print', 'Cancel']
 
 const HolderCont = (props: any) => {
    return (
-      <div className="relative flex flex-col h-80 gap-4 justify-center items-center px-10 border-solid  border-gray-800 border-b-2 border-r-2">
+      <div className="relative flex flex-col h-80 gap-4 justify-center items-center px-10 border-solid  border-gray-200 border-b-2 border-r-2">
          <div className="absolute top-0 left-0 text-sm text-gray-500 m-3">
             {props.title}
          </div>
@@ -36,14 +36,8 @@ const TestPage = (props: any) => {
          <div className=" bg-white grid grid-cols-4 grid-flow-row overflow-y-scroll">
             <HolderCont title="Text input">
                <MInput
-                  tagable
-                  value="Default value with tags"
-                  icon={<i className="ri-search-2-line"></i>}
-                  rightButtonIcon={<i className="ri-close-fill"></i>}
-               />
-               <MInput
                   fullWidth
-                  iserror
+                  // iserror
                   icon={<i className="ri-mail-line"></i>}
                   helperLine="This is a helper line"
                   label="Email address"

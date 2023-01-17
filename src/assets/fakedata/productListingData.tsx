@@ -96,13 +96,13 @@ export const DATA_COLUMNS: any = [
       disableSortBy: true,
    },
    {
-      Header: 'Product Name',
+      Header: 'Runner Name',
       accessor: 'product',
       disableSortBy: true,
       type: 'string',
    },
    {
-      Header: 'Purchase Link',
+      Header: 'Integrations',
       accessor: 'link',
       disableSortBy: true,
       type: 'link',
@@ -114,17 +114,17 @@ export const DATA_COLUMNS: any = [
       type: 'mesc',
    },
    {
-      Header: 'Inventory',
+      Header: 'Last Edited',
       accessor: 'inventory',
       type: 'number',
    },
    {
-      Header: 'Sales',
+      Header: 'Created On',
       accessor: 'sales',
       type: 'number',
    },
    {
-      Header: 'Revenue',
+      Header: 'Runs',
       accessor: 'revenue',
       type: 'number',
    },
