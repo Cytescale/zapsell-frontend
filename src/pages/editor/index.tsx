@@ -7,53 +7,15 @@ import ReactFlow, {
    Background,
    useNodesState,
    useEdgesState,
+   Panel,
    addEdge,
    applyNodeChanges,
    applyEdgeChanges,
 } from 'reactflow'
 import MButton from '../../design/components/button'
 import MSwitch from '../../design/components/switch'
-
-const initialNodes = [
-   { id: '1', position: { x: 400, y: 600 }, data: { label: 'node1' } },
-   { id: '2', position: { x: 100, y: 200 }, data: { label: '2' } },
-   { id: '3', position: { x: 200, y: 300 }, data: { label: 'node3' } },
-]
-
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }]
-
-const Editor = (props: any) => {
-   const [nodes, setNodes] = useState(initialNodes)
-   const [edges, setEdges] = useState(initialEdges)
-
-   const onNodesChange = useCallback(
-      (changes: any) => setNodes((nds) => applyNodeChanges(changes, nds)),
-      [setNodes],
-   )
-   const onEdgesChange = useCallback(
-      (changes: any) => setEdges((eds: any) => applyEdgeChanges(changes, eds)),
-      [setEdges],
-   )
-   const onConnect = useCallback(
-      (params: any) => setEdges((eds) => addEdge(params, eds)),
-      [setEdges],
-   )
-
-   return (
-      <div className=" w-full h-full ">
-         <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-         >
-            <Controls />
-            <Background />
-         </ReactFlow>
-      </div>
-   )
-}
+import MInput from '../../design/components/input'
+import Editor, { NodeAddSide } from '../../core/Controllers/canvasController'
 
 const EditorScreen = (props: any) => {
    const [selecProdList, setselecProdList] = useState<Array<any>>([])
@@ -84,7 +46,9 @@ const EditorScreen = (props: any) => {
                </div>
                <Editor />
             </div>
-            {/* <div className="w-60 flex h-full bg-gray-59 border border-solid"></div> */}
+            <div className="w-72 flex h-full bg-gray-59 border border-solid">
+               <NodeAddSide />
+            </div>
          </div>
       </div>
    )
