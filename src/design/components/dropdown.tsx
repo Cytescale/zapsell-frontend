@@ -32,7 +32,7 @@ const MDropDown = (props: MDropdownProps) => {
                   'font-medium',
                   'tracking-wide',
                   'text-sm',
-                  'text-gray-900',
+                  'text-zinc-300',
                   'px-1',
                )}
             >

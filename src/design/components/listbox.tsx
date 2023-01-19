@@ -1,3 +1,5 @@
+//@ts-nocheck
+//@ts-ignore
 import { useState } from 'react'
 import { Listbox } from '@headlessui/react'
 import { Transition } from '@headlessui/react'
@@ -12,23 +14,23 @@ export interface MListboxProps
    extends ButtonHTMLAttributes<HTMLButtonElement>,
       MButtonProps {
    label?: string
-   helperLine?: string
+   helperline?: string
    iserror?: boolean
-   fullWidth?: boolean
+   fullwidth?: boolean
    buttonVariant?: 'normal' | 'filled' | 'plain' | 'outline'
-   listMap?: Object[]
-   searchable?: boolean
+   listmap?: Object[]
+   searchable?: Boolean
 }
 
 const MListBox = (props: any) => {
-   const [selectedItem, setselectedItem] = useState(props.listMap[0])
+   const [selectedItem, setselectedItem] = useState(props.listmap[0])
    return (
       <div
          className={classNames(
             'flex',
             'flex-col',
             'gap-1.5',
-            props.fullWidth ? 'w-full' : 'w-fit',
+            props.fullwidth ? 'w-full' : 'w-fit',
          )}
       >
          {props.label && (
@@ -36,8 +38,8 @@ const MListBox = (props: any) => {
                className={classNames(
                   'font-medium',
                   'tracking-wide',
-                  'text-sm',
-                  'text-gray-900',
+                  'text-xs',
+                  'text-zinc-200',
                   'px-1',
                )}
             >
@@ -49,8 +51,9 @@ const MListBox = (props: any) => {
                <Listbox.Button className={'flex flex-col grow w-full'}>
                   <MButton
                      {...props}
-                     textAlign="left"  
-                     fullWidth={props.fullWidth}
+                     textAlign="left"
+                     variant="dark"
+                     fullwidth={props.fullwidth}
                      iserror={props.iserror}
                      rightIcon={<i className="ri-arrow-down-s-line"></i>}
                   >
@@ -59,25 +62,25 @@ const MListBox = (props: any) => {
                </Listbox.Button>
                <Listbox.Options
                   className={`
-              z-40 absolute origin-top-right right-0 mt-2 w-full pb-2 pt-2 divide-gray-100 rounded-lg bg-white shadow-lg border border-solid border-gray-100   
+               z-40 absolute origin-top-right right-0 mt-2 w-full pb-2 pt-2 divide-zinc-600 rounded-lg bg-zinc-800 shadow-xl border border-solid border-zinc-800   
          `}
                >
                   {props.searchable && (
                      <div className="px-3 py-2">
                         <MInput
-                           fullWidth
+                           fullwidth
                            icon={<i className="ri-search-2-line"></i>}
-                           rightButtonIcon={<i className="ri-close-line"></i>}
+                           // rightButtonIcon={<i className="ri-close-line"></i>}
                         />
                      </div>
                   )}
 
-                  {props.listMap &&
-                     props.listMap.map((person: any) => (
+                  {props.listmap &&
+                     props.listmap.map((person: any) => (
                         <Listbox.Option
                            key={person.id}
                            value={person}
-                           className={`w-full p-2 pl-4 text-md text-black hover:bg-slate-100`}
+                           className={`w-full p-2 pl-4 text-md  text-white hover:bg-zinc-900`}
                         >
                            {({ active, selected }) => (
                               <div className="relative flex flex-row items-center gap-2 text-sm ">
@@ -96,15 +99,11 @@ const MListBox = (props: any) => {
                </Listbox.Options>
             </Listbox>
          </div>
-         {props.helperLine && (
+         {props.helperline && (
             <div
-               className={classNames(
-                  'font-medium',
-                  'text-xs',
-                  props.iserror ? 'text-red-500' : 'text-gray-600',
-               )}
+               className={classNames('font-medium', 'text-xs', 'text-zinc-400')}
             >
-               {props.helperLine}
+               {props.helperline}
             </div>
          )}
       </div>

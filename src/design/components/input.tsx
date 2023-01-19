@@ -10,9 +10,9 @@ import MPill from './pill'
 export interface MInputProps extends InputHTMLAttributes<HTMLInputElement> {
    placeholder?: string
    label?: string
-   helperLine?: string
-   iserror?: boolean
-   fullWidth?: boolean
+   helperline?: string
+   iserror?: boolean | string
+   fullwidth?: boolean
    icon?: React.ReactElement | string
    tagable?: boolean
    rightButtonIcon?: React.ReactElement
@@ -58,7 +58,7 @@ const MInput = (props: MInputProps) => {
             'flex',
             'flex-col',
             'gap-2',
-            props.fullWidth ? 'w-full' : 'w-fit',
+            props.fullwidth ? 'w-full' : 'w-fit',
          )}
       >
          {props.label && (
@@ -66,8 +66,8 @@ const MInput = (props: MInputProps) => {
                className={classNames(
                   'font-medium',
                   'tracking-wide',
-                  'text-sm',
-                  'text-gray-900',
+                  'text-xs',
+                  'text-zinc-200',
                   'px-1',
                )}
             >
@@ -77,13 +77,13 @@ const MInput = (props: MInputProps) => {
 
          <div
             className={classNames(
-               'h-10',
+               'h-8',
                'flex flex-row',
                'rounded-md',
-               'bg-white',
-               'border border-zinc-300',
-               props.iserror && 'border-red-400',
-               'px-4',
+               'bg-zinc-800',
+               'border border-zinc-800',
+               props.iserror && 'border-red-400 border-2',
+               'px-3',
                'pr-0',
             )}
          >
@@ -104,9 +104,10 @@ const MInput = (props: MInputProps) => {
             )}
 
             <input
+               {...props}
                className={classNames(
                   'font-medium',
-                  'text-sm',
+                  'text-sm text-zinc-200 placeholder:text-zinc-500',
                   'w-full',
                   'h-full',
                   'bg-transparent',
@@ -134,16 +135,17 @@ const MInput = (props: MInputProps) => {
                   <button>{props.rightButtonIcon}</button>
                </div>
             )}
+            {props.iserror && (
+               <div className="flex w-8 h-8 justify-center items-center text-red-400 -mt-0.5">
+                  <i className="ri-error-warning-fill"></i>
+               </div>
+            )}
          </div>
-         {props.helperLine && (
+         {props.helperline && (
             <div
-               className={classNames(
-                  'font-medium',
-                  'text-xs',
-                  props.iserror ? 'text-red-500' : 'text-gray-600',
-               )}
+               className={classNames('font-medium', 'text-xs', 'text-zinc-400')}
             >
-               {props.helperLine}
+               {props.helperline}
             </div>
          )}
          {props.tagable && tags && tags.length > 0 && (

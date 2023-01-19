@@ -15,11 +15,13 @@ import ReactFlow, {
 import MButton from '../../design/components/button'
 import MSwitch from '../../design/components/switch'
 import MInput from '../../design/components/input'
-import Editor, { NodeAddSide } from '../../core/Controllers/canvasController'
+import Editor from '../../core/Controllers/canvasController'
+import NodeAddSide from '../../core/Menus/nodeAdder'
+import { useTree } from '../../core/Store'
+import { CanvasLeftPaneRender } from '../../core/Controllers/canvasController'
 
 const EditorScreen = (props: any) => {
-   const [selecProdList, setselecProdList] = useState<Array<any>>([])
-
+   
    return (
       <div
          className={classNames(
@@ -30,12 +32,20 @@ const EditorScreen = (props: any) => {
       >
          <div className="w-full h-full flex flex-row justify-center items-center">
             <div className="flex grow h-full flex-col">
-               <div className=" w-full flex grow h-16 z-20  items-center bg-gray-50 justify-between px-6">
-                  <div className="flex flex-row gap-2 w-fit h-full justify-center items-center">
-                     <button className="text-xl font-medium w-6 h-6 bg-transparent flex flex-row justify-center items-center rounded-md hover:bg-gray-100">
+               <div className=" w-full flex grow h-16 z-20  items-center  border border-solid border-zinc-800 bg-zinc-900 justify-between px-6">
+                  <div className="text-white flex flex-row gap-2 w-fit h-full justify-center items-center">
+                     <button className=" text-xl font-medium w-6 h-6 bg-transparent flex flex-row justify-center items-center rounded-md hover:bg-zinc-500">
                         <i className="ri-arrow-left-line"></i>
                      </button>
                      Untitled Runner
+                  </div>
+                  <div className=" bg-zinc-800 p-1 rounded-md h-fit w-fit flex flex-row gap-2">
+                     <button className="shadow-lg bg-blue-600 px-2 rounded-md py-1 text-sm text-white font-medium">
+                        Editor
+                     </button>
+                     <button className="px-2 rounded-md py-1 text-sm text-zinc-200 font-medium">
+                        Output
+                     </button>
                   </div>
                   <div className="flex flex-row gap-4 w-fit h-full justify-center items-center">
                      <MSwitch />
@@ -44,10 +54,8 @@ const EditorScreen = (props: any) => {
                      </button>
                   </div>
                </div>
+
                <Editor />
-            </div>
-            <div className="w-72 flex h-full bg-gray-59 border border-solid">
-               <NodeAddSide />
             </div>
          </div>
       </div>

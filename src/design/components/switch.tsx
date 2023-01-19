@@ -8,7 +8,7 @@ const MSwitch = (props: any) => {
          <div
             className={`
             w-10 h-6
-          bg-gray-300
+          bg-zinc-700
             peer-focus:outline-none
             rounded-full
             peer
@@ -18,7 +18,7 @@ const MSwitch = (props: any) => {
             after:absolute
             after:top-[4px]
             after:left-[4px]
-          after:bg-white
+          after:bg-zinc-200
           after:border-none
             after:border
             after:rounded-full

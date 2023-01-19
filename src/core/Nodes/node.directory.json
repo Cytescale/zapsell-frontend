@@ -1,0 +1,34 @@
+[
+   {
+      "id": "google_gmail",
+      "displayName": "Google Gmail",
+      "name": "gmail",
+      "company": "google",
+      "description": "Send and automate mails with gmail",
+      "logo": "google_gmail_logo.svg"
+   },
+   {
+      "id": "google_drive",
+      "displayName": "Google Drive",
+      "name": "drive",
+      "company": "google",
+      "description": "Send and automate files with drive",
+      "logo": "google_drive_logo.svg"
+   },
+   {
+      "id": "google_sheets",
+      "displayName": "Google Sheets",
+      "name": "sheets",
+      "company": "google",
+      "description": "Send and automate sheets and excels with sheets",
+      "logo": "google_sheets_logo.svg"
+   },
+   {
+      "id": "trello",
+      "displayName": "Trello",
+      "name": "trello",
+      "company": "trello",
+      "description": "Automate kanban boards with trello",
+      "logo": "trello_logo.svg"
+   }
+]

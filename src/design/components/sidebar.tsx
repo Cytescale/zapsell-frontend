@@ -14,10 +14,10 @@ import MDropDown from './dropdown'
 import MModal from './modal'
 
 const topbarLinkArr = [
-   ['Home', '#', <i className="ri-home-line"></i>],
-   ['Integration', '/integratons', <i className="ri-apps-2-line"></i>],
-   ['Runners', '/runners', <i className="ri-robot-line"></i>],
-   ['Whats New', '/whatsnew', <i className="ri-gift-line"></i>],
+   ['Home', '#', <i className="ri-home-fill"></i>],
+   ['Integration', '/integratons', <i className="ri-apps-fill"></i>],
+   ['Runners', '/runners', <i className="ri-robot-fill"></i>],
+   ['Whats New', '/whatsnew', <i className="ri-gift-fill"></i>],
 ]
 
 const ProfileDropdown = (props: any) => {
@@ -126,7 +126,7 @@ const Sidebar = (props: any) => {
 
    return (
       <div className={classNames('relative', 'h-screen', 'h-fit w-fit')}>
-         <div className="relative flex flex-col  bg-gray-50 justify-center items-center w-fit h-full p-4 pt-8 pb-4">
+         <div className="relative flex flex-col  bg-zinc-900 border border-solid border-zinc-800 justify-center items-center w-fit h-full p-4 pt-8 pb-4">
             <div className="w-8 h-8 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full"></div>
 
             <div className="mt-8 w-full flex flex-col gap-3">
@@ -139,14 +139,14 @@ const Sidebar = (props: any) => {
                            'flex justify-start items-center',
                            'rounded-md',
                            'cursor-pointer',
-                           'hover:bg-gray-200 ',
+                           'hover:bg-zinc-800 ',
                         )}
                      >
                         <a
                            className={classNames(
                               location.pathname.includes(e[1])
-                                 ? 'text-gray-800 '
-                                 : 'text-gray-600',
+                                 ? 'text-zinc-50'
+                                 : 'text-zinc-500',
                               'font-normal',
                               'tracking-wider',
                               'text-2xl',
@@ -164,7 +164,7 @@ const Sidebar = (props: any) => {
             </div>
 
             <div className="flex flex-col flex-grow"></div>
-            <div className="w-8 h-8 rounded-full bg-gray-400"></div>
+            {/* <div className="w-8 h-8 rounded-full bg-gray-400"></div> */}
          </div>
          <div></div>
       </div>
