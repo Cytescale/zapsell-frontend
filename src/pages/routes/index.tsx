@@ -16,7 +16,6 @@ import ProductEarning from "../productearning";
 import ProductEdit from "../productedit";
 import PageHeaderPane from "../../design/components/header";
 import Settings from "../settings";
-import Products from "../productListing/products";
 
 const ShellComp = (props: any) => {
   return (
