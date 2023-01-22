@@ -1,8 +1,13 @@
 /** @format */
 
-import { SelectionState, Modifier, EditorState } from 'draft-js'
+import {
+   SelectionState,
+   Modifier,
+   EditorState,
+   EditorChangeType,
+} from 'draft-js'
 import { getSelectedBlocksMap } from 'draftjs-utils'
-export const lockScroll = (bool) => {
+export const lockScroll = (bool: any) => {
    if (bool) {
       document.body.style.overflow = 'hidden'
    } else {
@@ -10,7 +15,7 @@ export const lockScroll = (bool) => {
    }
 }
 
-export const getUpperInsertableBlock = (conState, blockKey) => {
+export const getUpperInsertableBlock = (conState: any, blockKey: any) => {
    var blockBefore = conState.getBlockBefore(blockKey)
    while (blockBefore) {
       if (blockBefore) {
@@ -31,16 +36,16 @@ export const getUpperInsertableBlock = (conState, blockKey) => {
 }
 
 export const skipEntityBackspace = (
-   nwState,
-   contState,
-   block,
-   blockKey,
-   prvBlock,
+   nwState: any,
+   contState: any,
+   block: any,
+   blockKey: any,
+   prvBlock: any,
 ) => {
    var newState = nwState
    var nsCntSt = newState.getCurrentContent()
    const insrtBlock = getUpperInsertableBlock(contState, blockKey)
-   var newSelec = SelectionState.createEmpty(insrtBlock.key)
+   var newSelec: any = SelectionState.createEmpty(insrtBlock.key)
    newSelec = newSelec.set('focusOffset', insrtBlock.getLength())
    newSelec = newSelec.set('anchorOffset', insrtBlock.getLength())
    nsCntSt = Modifier.insertText(
@@ -49,7 +54,7 @@ export const skipEntityBackspace = (
       block.getText(),
    )
    newState = EditorState.push(newState, nsCntSt, 'insert-text')
-   var toDeleteSelec = SelectionState.createEmpty(blockKey)
+   var toDeleteSelec: any = SelectionState.createEmpty(blockKey)
    toDeleteSelec = toDeleteSelec.set('focusOffset', block.getLength())
    toDeleteSelec = toDeleteSelec.set('anchorKey', prvBlock.getKey())
    toDeleteSelec = toDeleteSelec.set('anchorOffset', prvBlock.getLength())
@@ -63,27 +68,30 @@ export const skipEntityBackspace = (
    return newState
 }
 
-export const removeBlockTypes = (editorState) => {
+export const removeBlockTypes = (editorState: any) => {
    const contentState = editorState.getCurrentContent()
    const blocksMap = getSelectedBlocksMap(editorState)
-   const contentWithoutBlocks = blocksMap.reduce((newContentState, block) => {
-      const blockType = block.getType()
-      if (blockType === 'unstyled') {
-         const selectionState = SelectionState.createEmpty(block.getKey())
-         const updatedSelection = selectionState.merge({
-            focusOffset: 0,
-            anchorOffset: block.getText().length,
-         })
+   const contentWithoutBlocks = blocksMap.reduce(
+      (newContentState: any, block: any) => {
+         const blockType = block.getType()
+         if (blockType === 'unstyled') {
+            const selectionState = SelectionState.createEmpty(block.getKey())
+            const updatedSelection = selectionState.merge({
+               focusOffset: 0,
+               anchorOffset: block.getText().length,
+            })
 
-         return Modifier.setBlockType(
-            newContentState,
-            updatedSelection,
-            'unstyled',
-         )
-      }
+            return Modifier.setBlockType(
+               newContentState,
+               updatedSelection,
+               'unstyled',
+            )
+         }
 
-      return newContentState
-   }, contentState)
+         return newContentState
+      },
+      contentState,
+   )
 
    const newEditorState = EditorState.push(
       editorState,
@@ -94,7 +102,7 @@ export const removeBlockTypes = (editorState) => {
    return newEditorState
 }
 
-export const wholeBlockSelected = (editorState) => {
+export const wholeBlockSelected = (editorState: any) => {
    let edtState = editorState
    const selecState = edtState.getSelection()
    const block = edtState
@@ -112,7 +120,7 @@ export const wholeBlockSelected = (editorState) => {
    return false
 }
 
-export const afterWholeBlockSelected = (editorState) => {
+export const afterWholeBlockSelected = (editorState: any) => {
    let edtState = editorState
    const selecState = edtState.getSelection()
    const curr_block = edtState
@@ -128,7 +136,7 @@ export const afterWholeBlockSelected = (editorState) => {
    return false
 }
 
-export const selectionCorrection = (editorState) => {
+export const selectionCorrection = (editorState: any) => {
    let edtState = editorState
    const selecState = edtState.getSelection()
    const curr_block = edtState
@@ -146,7 +154,11 @@ export const selectionCorrection = (editorState) => {
    return edtState
 }
 
-export function getTextSelection(contentState, selection, blockDelimiter) {
+export function getTextSelection(
+   contentState: any,
+   selection: any,
+   blockDelimiter: any,
+) {
    blockDelimiter = blockDelimiter || '\n'
    var startKey = selection.getStartKey()
    var endKey = selection.getEndKey()
@@ -154,10 +166,10 @@ export function getTextSelection(contentState, selection, blockDelimiter) {
 
    var lastWasEnd = false
    var selectedBlock = blocks
-      .skipUntil(function (block) {
+      .skipUntil(function (block: any) {
          return block.getKey() === startKey
       })
-      .takeUntil(function (block) {
+      .takeUntil(function (block: any) {
          var result = lastWasEnd
 
          if (block.getKey() === endKey) {
@@ -168,7 +180,7 @@ export function getTextSelection(contentState, selection, blockDelimiter) {
       })
 
    return selectedBlock
-      .map(function (block) {
+      .map(function (block: any) {
          var key = block.getKey()
          var text = block.getText()
 

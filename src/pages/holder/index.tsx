@@ -6,7 +6,7 @@ export const AppBaseCont = (props: any) => {
       <>
          <div
             className={classNames(
-               'min-w-full max-w-full w-screen h-screen max-h-screen min-h-screen flex flex-col overflow-hidden',
+               'min-w-full max-w-full w-screen h-screen max-h-screen min-h-screen flex flex-row overflow-hidden ',
             )}
          >
             {props.children}
@@ -20,7 +20,7 @@ export const AppInnerCont = (props: any) => {
       <>
          <div
             className={classNames(
-               'min-w-full max-w-full w-screen h-screen max-h-screen min-h-screen flex flex-col overflow-hidden',
+               'w-full h-screen max-h-screen min-h-screen flex flex-row   overflow-hidden ',
             )}
          >
             {props.children}
@@ -32,7 +32,9 @@ export const AppInnerCont = (props: any) => {
 export const AppPageCont = (props: any) => {
    return (
       <>
-         <div className={classNames('w-full  h-full  flex  overflow-hidden')}>
+         <div
+            className={classNames('w-full   h-full   flex  overflow-hidden ')}
+         >
             {props.children}
          </div>
       </>

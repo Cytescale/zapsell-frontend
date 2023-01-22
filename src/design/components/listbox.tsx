@@ -34,10 +34,11 @@ const MListBox = (props: any) => {
          {props.label && (
             <div
                className={classNames(
-                  'font-semibold',
-                  'tracking-normal',
+                  'font-medium',
+                  'tracking-wide',
                   'text-sm',
-                  'text-gray-700',
+                  'text-gray-900',
+                  'px-1',
                )}
             >
                {props.label}

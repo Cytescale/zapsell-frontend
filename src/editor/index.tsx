@@ -12,8 +12,8 @@ import {
 import { BlockRenderer, extendedBlockRenderMap } from './block'
 import { ReturnHandler, KeyCommandHandler, KeyBinderHandle } from './handlers'
 import { selectionCorrection } from './handlers/utils'
+// import Handlers from './handlers'
 import EditorMenuCont from './menu'
-import { EditorMode, EditorLockState, EditorMenuState } from './constants'
 import { lockScroll } from './handlers/utils'
 import { findLinkEnti, LinkDeco } from './block/decorator'
 

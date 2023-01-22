@@ -7,7 +7,7 @@ const MSwitch = (props: any) => {
          <input type="checkbox" value="" className="sr-only peer" />
          <div
             className={`
-            w-11 h-6
+            w-10 h-6
           bg-gray-300
             peer-focus:outline-none
             rounded-full
@@ -16,15 +16,15 @@ const MSwitch = (props: any) => {
             peer-checked:after:border-none
             after:content-['']
             after:absolute
-            after:top-[2px]
-            after:left-[2px]
+            after:top-[4px]
+            after:left-[4px]
           after:bg-white
           after:border-none
             after:border
             after:rounded-full
-            after:h-5 after:w-5
+            after:h-4 after:w-4
             after:transition-all
-          peer-checked:bg-violet-500
+          peer-checked:bg-blue-500
           `}
          ></div>
       </label>

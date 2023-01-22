@@ -8,7 +8,6 @@ import {
    RichUtils,
    convertFromHTML,
    ContentState,
-   Draft,
    DefaultDraftBlockRenderMap,
    convertToRaw,
    getDefaultKeyBinding,
@@ -16,7 +15,6 @@ import {
    EditorChangeType,
    Modifier,
    AtomicBlockUtils,
-   removeTextWithStrategy,
    ContentBlock,
    genKey,
    SelectionState,
@@ -24,7 +22,7 @@ import {
 import Immutable, { List } from 'immutable'
 import { compositeDecorator } from '..'
 
-export const insertNewBlock = (editorState) => {
+export const insertNewBlock = (editorState: any) => {
    const newBlock = new ContentBlock({
       key: genKey(),
       type: 'unstyled',
@@ -35,12 +33,12 @@ export const insertNewBlock = (editorState) => {
    const currSelec = editorState.getSelection()
    const currentBlock = contentState.getBlockForKey(currSelec.getEndKey())
    const blockMap = contentState.getBlockMap()
-   const blocksBefore = blockMap.toSeq().takeUntil(function (v) {
+   const blocksBefore = blockMap.toSeq().takeUntil(function (v: any) {
       return v === currentBlock
    })
    const blocksAfter = blockMap
       .toSeq()
-      .skipUntil(function (v) {
+      .skipUntil(function (v: any) {
          return v === currentBlock
       })
       .rest()
@@ -62,7 +60,7 @@ export const insertNewBlock = (editorState) => {
    const newBlockMap = blocksBefore
       .concat(newBlocks, blocksAfter)
       .toOrderedMap()
-   var newSelec = SelectionState.createEmpty(newBlock.getKey())
+   var newSelec: any = SelectionState.createEmpty(newBlock.getKey())
    newSelec = newSelec.set('anchorOffset', 0)
    newSelec = newSelec.set('focusKey', newBlock.getKey())
    newSelec = newSelec.set('focusOffset', 0)
@@ -76,7 +74,7 @@ export const insertNewBlock = (editorState) => {
    return newEditorState
 }
 
-export const insertBlockWithType = (editorState, type) => {
+export const insertBlockWithType = (editorState: any, type: any) => {
    const newBlock = new ContentBlock({
       key: genKey(),
       type: type,
@@ -87,12 +85,12 @@ export const insertBlockWithType = (editorState, type) => {
    const currSelec = editorState.getSelection()
    const currentBlock = contentState.getBlockForKey(currSelec.getEndKey())
    const blockMap = contentState.getBlockMap()
-   const blocksBefore = blockMap.toSeq().takeUntil(function (v) {
+   const blocksBefore = blockMap.toSeq().takeUntil(function (v: any) {
       return v === currentBlock
    })
    const blocksAfter = blockMap
       .toSeq()
-      .skipUntil(function (v) {
+      .skipUntil(function (v: any) {
          return v === currentBlock
       })
       .rest()
@@ -114,7 +112,7 @@ export const insertBlockWithType = (editorState, type) => {
    const newBlockMap = blocksBefore
       .concat(newBlocks, blocksAfter)
       .toOrderedMap()
-   var newSelec = SelectionState.createEmpty(newBlock.getKey())
+   var newSelec: any = SelectionState.createEmpty(newBlock.getKey())
    newSelec = newSelec.set('anchorOffset', 0)
    newSelec = newSelec.set('focusKey', newBlock.getKey())
    newSelec = newSelec.set('focusOffset', 0)
@@ -128,7 +126,7 @@ export const insertBlockWithType = (editorState, type) => {
    return newEditorState
 }
 
-export const insertDivider = (editorState) => {
+export const insertDivider = (editorState: any) => {
    const contentState = editorState.getCurrentContent()
    const contentStateWithEntity = contentState.createEntity(
       'divider',
@@ -142,7 +140,11 @@ export const insertDivider = (editorState) => {
    return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, ' ')
 }
 
-export const insertLinkEntity = (editorState, url, displayText) => {
+export const insertLinkEntity = (
+   editorState: any,
+   url: any,
+   displayText: any,
+) => {
    const decorator = compositeDecorator
    const currContext = editorState.getCurrentContent()
    currContext.createEntity('LINK', 'MUTABLE', {
@@ -164,12 +166,12 @@ export const insertLinkEntity = (editorState, url, displayText) => {
    )
 }
 
-export const toggleBlockWithType = (editorState, type) => {
+export const toggleBlockWithType = (editorState: any, type: any) => {
    const newEs = RichUtils.toggleBlockType(editorState, type)
    return newEs
 }
 
-export const toggleProperBlock = (type, editorState) => {
+export const toggleProperBlock = (type: any, editorState: any) => {
    switch (type) {
       case 'paragrapgh': {
          return toggleBlockWithType(editorState, 'unstyled')
@@ -205,7 +207,7 @@ export const toggleProperBlock = (type, editorState) => {
    }
 }
 
-export const insertProperBlock = (type, editorState) => {
+export const insertProperBlock = (type: any, editorState: any) => {
    switch (type) {
       case 'paragrapgh': {
          return insertBlockWithType(editorState, 'unstyled')

@@ -28,11 +28,10 @@ const LogoutModal = (props: any) => {
    return (
       <>
          <button
-            className={`w-full p-1.5 pl-4 text-sm text-red-500 hover:bg-slate-100`}
+            className={`w-full h-9 items-center justify-start text-sm text-red-500 hover:bg-slate-100`}
             onClick={() => setisOpen(true)}
          >
-            <div className="flex flex-row gap-2 text-base  items-center p-0 tracking-wide">
-               <i className="ri-logout-box-r-line text-lg  flex justify-center items-center h-max"></i>
+            <div className="flex flex-row gap-2  px-6 text-base  items-center p-0 tracking-wide">
                Logout
             </div>
          </button>
@@ -81,7 +80,7 @@ const ProfileDropdown = (props: any) => {
          <MDropDown
             dropButtom={
                <button className="flex flex-row gap-2 items-center  rounded-md pr-3">
-                  <div className="flex flex-col bg-violet-600 justify-center items-center text-white text-md w-8 h-8 rounded-full ">
+                  <div className="flex flex-col bg-violet-500 hover:bg-violet-300 justify-center items-center text-white text-md w-8 h-8 rounded-full ">
                      {/* <i className="ri-user-line"></i> */}A
                   </div>
                   {/* <div className="flex flex-row justify-center items-center text-white tracking-wide font-medium text-sm">
@@ -90,79 +89,64 @@ const ProfileDropdown = (props: any) => {
                </button>
             }
          >
-            <div className="p-4 py-3 w-56 flex flex-col gap-0.5">
-               <div className="text-sm text-gray-500 font-medium">
-                  Signed in as
+            <div className="px-4 py-2 w-60 flex flex-row gap-3">
+               <div className="flex flex-col bg-purple-100 hover:bg-gray-700 justify-center items-center text-purple-700 text-md w-8 h-8 rounded-full ">
+                  A
                </div>
-               <div className="text-sm text-black   font-medium">
-                  Name...@gmail.com
+               <div className="flex flex-col gap-0">
+                  <div className="text-sm text-gray-500 font-medium">
+                     Signed in as
+                  </div>
+                  <div className="text-sm text-black   font-medium">
+                     nikhil@cytescale.com
+                  </div>
                </div>
             </div>
             <div className="flex grow w-full my-2 h-0 border border-solid border-gray-100 border-t-0 border-l-0 border-r-0  border-b-2" />
             <Menu.Item>
                <a
-                  className={`w-full p-1.5 pl-4 text-sm text-gray-500 hover:bg-slate-100`}
+                  className={`w-full h-9  flex flex-row justify-start items-center text-gray-600 hover:bg-slate-100`}
                   href="/settings/profile"
                >
-                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                     <i className="ri-user-line text-lg  flex justify-center items-center h-max"></i>
+                  <div className="flex flex-row gap-2 w-full px-6  text-base items-center p-0 tracking-wide">
                      Profile
                   </div>
                </a>
             </Menu.Item>
             <Menu.Item>
                <a
-                  className={`w-full p-1.5 pl-4 text-sm text-gray-500 hover:bg-slate-100`}
-                  href="/account-settings"
+                  className={`w-full h-9 flex flex-row justify-start items-center text-gray-600 hover:bg-slate-100`}
+                  href="/settings/profile"
                >
-                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                     <i className="ri-settings-3-line text-lg  flex justify-center items-center h-max"></i>
+                  <div className="flex flex-row gap-2 w-full px-6  text-base items-center p-0 tracking-wide">
                      Settings
                   </div>
                </a>
             </Menu.Item>
-            <Menu.Item>
-               <LogoutModal />
-               {/* <a
-                  className={`w-full p-1.5 pl-4 text-sm text-red-500 hover:bg-slate-100`}
-                  href="/account-settings"
-               >
-                  <div className="flex flex-row gap-2 text-base  items-center p-0 tracking-wide">
-                     <i className="ri-logout-box-r-line text-lg  flex justify-center items-center h-max"></i>
-                     Logout
-                  </div>
-               </a> */}
-            </Menu.Item>
+
             <div className="flex grow w-full my-2 h-0 border border-solid border-gray-100 border-t-0 border-l-0 border-r-0  border-b-2" />
             <Menu.Item>
                <a
-                  className={`w-full p-1.5 pl-4 text-sm text-gray-500 hover:bg-slate-100`}
-                  href="/account-settings"
+                  className={`w-full h-9  flex flex-row justify-start items-center text-gray-600 hover:bg-slate-100`}
+                  href="/settings/profile"
                >
-                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
+                  <div className="flex flex-row gap-2 w-full px-6  text-base items-center p-0 tracking-wide">
                      Feedback
                   </div>
                </a>
             </Menu.Item>
             <Menu.Item>
                <a
-                  className={`w-full p-1.5 pl-4 text-sm text-gray-500 hover:bg-slate-100`}
-                  href="/account-settings"
+                  className={`w-full h-9  flex flex-row justify-start items-center text-gray-600 hover:bg-slate-100`}
+                  href="/settings/profile"
                >
-                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
+                  <div className="flex flex-row gap-2 w-full px-6  text-base items-center p-0 tracking-wide">
                      Legal
                   </div>
                </a>
             </Menu.Item>
             <Menu.Item>
-               <a
-                  className={`w-full p-1.5 pl-4 text-sm text-gray-500 hover:bg-slate-100`}
-                  href="/account-settings"
-               >
-                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                     Support
-                  </div>
-               </a>
+               <LogoutModal />
             </Menu.Item>
          </MDropDown>
       </>
@@ -174,21 +158,21 @@ const HeaderRightCont = (props: any) => {
       <>
          <button
             className={classNames(
-               'flex flex-col h-8 w-8 bg-transparent text-violet-300 justify-center items-center text-xl rounded-full mr-2',
+               'flex flex-col h-8 w-8 bg-transparent text-violet-400 justify-center items-center text-xl rounded-full',
             )}
          >
-            <i className="ri-question-fill"></i>
-            {/* <i className="ri-question-mark   "></i> */}
+            {/* <i className="ri-question-fill"></i> */}
+            <i className="ri-question-mark   "></i>
          </button>
-         <ProfileDropdown />
          <button
             className={classNames(
-               'flex flex-row gap-2 h-8   font-medium bg-violet-600 text-violet-100 justify-center items-center text-sm px-4 rounded-md hover:bg-violet-500',
+               'flex flex-row gap-2 h-8   font-medium bg-violet-600 text-gray-100 justify-center items-center text-sm px-4 rounded-md hover:bg-gray-800',
             )}
          >
             {/* <i className="ri-add-line"></i> */}
             Add Product
          </button>
+         <ProfileDropdown />
       </>
    )
 }
@@ -205,7 +189,7 @@ const PageHeaderPane = (props: any) => {
             'h-fit',
          )}
       >
-         <div className="relative flex flex-row  bg-violet-700 gap-1 justify-between items-center px-10 h-14 ">
+         <div className="relative flex flex-row  bg-violet-700 gap-1 justify-between items-center px-10 h-14  border-none">
             <div className="flex flex-row w-fit h-full gap-4 items-center justify-start">
                <svg
                   className="sidebar-logo-ico"
@@ -223,30 +207,30 @@ const PageHeaderPane = (props: any) => {
                   />
                </svg>
 
-               <div className="flex flex-row h-fit gap-2">
-                  {topbarLinkArr.map((e) => {
+               <div className="flex flex-row h-full  gap-2">
+                  {topbarLinkArr.map((e, i) => {
                      return (
                         <div
+                           key={i}
                            className={classNames(
-                              '',
                               'mx-0',
-                              '',
+                              'text-violet-300',
                               'flex justify-center items-center',
-                              'rounded-md',
-                              location.pathname.includes(e[1])
-                                 ? 'bg-violet-600 '
-                                 : 'hover:bg-violet-600 ',
+                              // 'rounded-md',
+                              // location.pathname.includes(e[1])
+                              //    ? 'bg-violet-500 '
+                              //    : 'hover:bg-violet-600 ',
                            )}
                         >
                            <a
                               className={classNames(
                                  location.pathname.includes(e[1])
-                                    ? 'text-white'
-                                    : 'text-violet-100',
+                                    ? 'text-white '
+                                    : 'text-violet-300',
                                  'font-normal',
                                  'tracking-wide',
                                  'text-sm',
-                                 'h-ful py-2 px-3',
+                                 'h-full py-2 px-3',
                                  'flex flex-col justify-center items-center',
                               )}
                               href={e[1]}
@@ -258,7 +242,7 @@ const PageHeaderPane = (props: any) => {
                   })}
                </div>
             </div>
-            <div className="flex flex-row w-fit h-full gap-0 items-center justify-end ">
+            <div className="flex flex-row w-fit h-full gap-3 items-center justify-end ">
                <HeaderRightCont />
             </div>
          </div>

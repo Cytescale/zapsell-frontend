@@ -1,8 +1,8 @@
 /** @format */
 
-const template_page_code_empt = ``
+const template_page_code_empt: string = ``
 
-const template_page_code = `
+const template_page_code: string = `
 
 <h1>🚀Introduction of Technology</h1>
 Technology is something that is gaining increasing importance in the world today. 

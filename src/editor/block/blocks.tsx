@@ -8,7 +8,6 @@ import {
    RichUtils,
    convertFromHTML,
    ContentState,
-   Draft,
    DefaultDraftBlockRenderMap,
    convertToRaw,
    getDefaultKeyBinding,
@@ -16,16 +15,12 @@ import {
    EditorChangeType,
    Modifier,
    AtomicBlockUtils,
-   removeTextWithStrategy,
    ContentBlock,
    genKey,
    SelectionState,
 } from 'draft-js'
-import { insertNewBlock } from '../commands'
-import { EditorLockState } from '../constants'
-import { lockScroll } from '../handlers/utils'
 
-function getPlaceholderData(blocktype) {
+function getPlaceholderData(blocktype: any) {
    switch (blocktype) {
       case 'header-one': {
          return ['forcePlaceholderH1', 'Heading 1']
@@ -51,11 +46,11 @@ function getPlaceholderData(blocktype) {
    }
 }
 
-function BlockWrapper(props) {
+function BlockWrapper(props: any) {
    return <div className={`sienna-editor-master-wrapper`}>{props.children}</div>
 }
 
-function Header1BlockRender(props) {
+function Header1BlockRender(props: any) {
    return (
       <BlockWrapper {...props}>
          <div className="sienna-editor-header-1-block">
@@ -64,7 +59,7 @@ function Header1BlockRender(props) {
       </BlockWrapper>
    )
 }
-function Header2BlockRender(props) {
+function Header2BlockRender(props: any) {
    return (
       <BlockWrapper {...props}>
          <div className="sienna-editor-header-2-block">
@@ -74,7 +69,7 @@ function Header2BlockRender(props) {
    )
 }
 
-function UnstyledBlockRender(props) {
+function UnstyledBlockRender(props: any) {
    return (
       <BlockWrapper {...props}>
          <div className={`sienna-editor-unstyle-block`}>
@@ -83,7 +78,7 @@ function UnstyledBlockRender(props) {
       </BlockWrapper>
    )
 }
-function BlockBlockRender(props) {
+function BlockBlockRender(props: any) {
    return (
       <BlockWrapper {...props}>
          <div className="sienna-editor-block-block">
@@ -92,7 +87,7 @@ function BlockBlockRender(props) {
       </BlockWrapper>
    )
 }
-function BlockCodeRender(props) {
+function BlockCodeRender(props: any) {
    return (
       <BlockWrapper {...props}>
          <div className="sienna-editor-block-code">
@@ -102,13 +97,13 @@ function BlockCodeRender(props) {
    )
 }
 
-function BlockUOLRender(props) {
+function BlockUOLRender(props: any) {
    return (
       <BlockWrapper {...props}>
          <div data-before="&#8226;" className="sienna-editor-UOL-block">
             <div
                data-before="&#8226;"
-               contenteditable="false"
+               contentEditable={false}
                className="sienna-editor-UOL-block-cir"
             />
             <EditorBlock {...props}>hello world</EditorBlock>
@@ -117,7 +112,7 @@ function BlockUOLRender(props) {
    )
 }
 
-function BlockOLRender(props) {
+function BlockOLRender(props: any) {
    return (
       <BlockWrapper {...props}>
          <div className="sienna-editor-OL-block">
@@ -128,12 +123,12 @@ function BlockOLRender(props) {
    )
 }
 
-function AtomicBlockRender(props) {
+function AtomicBlockRender(props: any) {
    const type = props.contentState.getEntity(props.block.getEntityAt(0)).type
    const data = props.contentState
       .getEntity(props.block.getEntityAt(0))
       .getData()
-   const handleDividerClick = (e) => {
+   const handleDividerClick = (e: any) => {
       // props.blockProps.editorStateChage(EditorState.forceSelection(props.blockProps.editorState, props.selection))
    }
 

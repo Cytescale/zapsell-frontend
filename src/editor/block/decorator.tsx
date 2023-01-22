@@ -1,5 +1,9 @@
-export const findLinkEnti = (contentBlock, callback, contentState) => {
-   contentBlock.findEntityRanges((char) => {
+export const findLinkEnti = (
+   contentBlock: any,
+   callback: any,
+   contentState: any,
+) => {
+   contentBlock.findEntityRanges((char: any) => {
       const entityKey = char.getEntity()
       return (
          entityKey !== null &&
@@ -8,7 +12,7 @@ export const findLinkEnti = (contentBlock, callback, contentState) => {
    }, callback)
 }
 
-export const LinkDeco = (props) => {
+export const LinkDeco = (props: any) => {
    const { url, linkText } = props.contentState
       .getEntity(props.entityKey)
       .getData()

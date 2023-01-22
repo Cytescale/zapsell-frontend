@@ -57,7 +57,7 @@ const MInput = (props: MInputProps) => {
          className={classNames(
             'flex',
             'flex-col',
-            'gap-1.5',
+            'gap-2',
             props.fullWidth ? 'w-full' : 'w-fit',
          )}
       >
@@ -65,9 +65,10 @@ const MInput = (props: MInputProps) => {
             <div
                className={classNames(
                   'font-medium',
-                  'tracking-normal',
+                  'tracking-wide',
                   'text-sm',
-                  'text-gray-700',
+                  'text-gray-900',
+                  'px-1',
                )}
             >
                {props.label}
@@ -77,15 +78,12 @@ const MInput = (props: MInputProps) => {
          <div
             className={classNames(
                'h-10',
-               'flex',
-               'flex-row',
-               // 'gap-1',
-               'border',
+               'flex flex-row',
                'rounded-md',
-
-               'border-gray-300',
-               props.iserror ? 'border-red-400' : 'border-gray-300',
-               'px-3',
+               'bg-white',
+               'border border-zinc-300',
+               props.iserror && 'border-red-400',
+               'px-4',
                'pr-0',
             )}
          >
@@ -94,9 +92,10 @@ const MInput = (props: MInputProps) => {
                   className={classNames(
                      'flex',
                      'justify-center',
-                     'pr-2',
+                     'pr-3',
                      'items-center',
                      'h-full',
+
                      'text-gray-400',
                   )}
                >
@@ -111,7 +110,6 @@ const MInput = (props: MInputProps) => {
                   'w-full',
                   'h-full',
                   'bg-transparent',
-
                   'outline-none',
                   'border-none',
                )}

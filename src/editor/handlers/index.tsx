@@ -21,9 +21,9 @@ import {
 } from '../commands'
 import { SelectionState } from 'draft-js'
 import { removeBlockTypes } from './utils'
-import { getSelectedBlock, getSelectionText } from 'draftjs-utils'
+import * as Helper from './helper.js'
 
-export function ReturnHandler(e, eState, editorStateChange) {
+export function ReturnHandler(e: any, eState: any, editorStateChange: any) {
    const editorState = eState
    const currBlockType = RichUtils.getCurrentBlockType(editorState)
    const isContinousBlock = toContinueBlocks.indexOf(currBlockType) > -1
@@ -70,7 +70,7 @@ export function ReturnHandler(e, eState, editorStateChange) {
    return 'handled'
 }
 
-const backspaceHandler = (eState, editorStateChange) => {
+export function backspaceHandler(eState: any, editorStateChange: any) {
    const edtrState = eState
    const currSelec = edtrState.getSelection()
    if (currSelec.isCollapsed() && currSelec.getFocusOffset() === 0) {
@@ -112,7 +112,11 @@ const backspaceHandler = (eState, editorStateChange) => {
    return 'not-handled'
 }
 
-export function KeyCommandHandler(command, eState, editorStateChange) {
+export function KeyCommandHandler(
+   command: any,
+   eState: any,
+   editorStateChange: any,
+) {
    switch (command) {
       case 'backspace': {
          return backspaceHandler(eState, editorStateChange)
@@ -124,7 +128,7 @@ export function KeyCommandHandler(command, eState, editorStateChange) {
    }
 }
 
-export function KeyBinderHandle(e) {
+export function KeyBinderHandle(e: any) {
    switch (e.keyCode) {
       default: {
          return getDefaultKeyBinding(e)

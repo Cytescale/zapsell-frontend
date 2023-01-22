@@ -24,24 +24,23 @@ const ProductTabArr = [
 
 const ProductEditTabs = (props: any) => {
    const nac = useLocation()
-
+   // border-b-2 border-solid border-white py-2
    return (
-      <div className="flex flex-row gap-8 shrink w-fit">
+      <div className="flex flex-row gap-0 shrink w-fit">
          {ProductTabArr.map((e: any) => {
             return (
                <a
                   className={classNames(
-                     'py-2 pt-3',
-                     'text-sm font-medium cursor-pointer',
+                     'py-2 px-4 h-fit rounded-md',
+                     'text-sm font-medium tracking-wide cursor-pointer',
                      'flex flex-row gap-1 items-center justify-center',
-                     'hover:text-black',
+                     'hover:text-gray-800',
                      nac.hash.includes(e[1])
-                        ? 'text-black border-b-2 border-solid border-black py-3'
-                        : 'text-gray-400',
+                        ? 'text-gray-800 bg-gray-200'
+                        : 'text-gray-500',
                   )}
                   href={e[1]}
                >
-                  {e[2]}
                   {e[0]}
                </a>
             )
@@ -77,24 +76,24 @@ const ProductEdit = (props: any) => {
    return (
       <div
          className={classNames(
-            'overflow-y-scroll  bg-slate-100  w-screen overflow-x-hidden relative',
+            'overflow-y-scroll w-full overflow-x-hidden relative bg-gray-50',
          )}
       >
-         <div className=" relative flex flex-row  justify-between items-center h-fit w-screen pt-8 pb-0 px-64 border  border-t-0 border-solid border-slate-300">
-            <div className="flex flex-col w-fit gap-1.5  pb-0">
-               {/* <MBreadcrumbs /> */}
-               <div className="text-black font-semibold text-xl tracking-tight flex flex-row items-center gap-2">
-                  Product Edit
-                  <MBadge>Active</MBadge>
-                  <div className="flex flex-col text-xs text-gray-600">
-                     #digital
+         <div className="relative flex flex-row z-0  justify-between items-center h-fit w-full p-24 pb-16 pt-16 ">
+            <div className="flex flex-col w-fit gap-4 ">
+               <div className="flex flex-col w-fit justify-start items-start">
+                  <div className="text-gray-800 font-medium text-xl tracking-normal flex flex-row gap-1">
+                     Edit Product
+                  </div>
+                  <div className="text-gray-400 text-sm ">
+                     You can details of all the created products
                   </div>
                </div>
                <ProductEditTabs />
             </div>
-            <div className="flex flex-row gap-4 s">
+            <div className="flex flex-row gap-4">
                <MButton
-                  variant="white"
+                  variant="normal"
                   borderless
                   modifier="monochrome"
                   icon={<i className="ri-save-line"></i>}
@@ -102,20 +101,20 @@ const ProductEdit = (props: any) => {
                   Save
                </MButton>
                <MButton
-                  variant="white"
+                  variant="normal"
                   borderless
                   modifier="monochrome"
                   icon={<i className="ri-external-link-line"></i>}
                >
                   Preview
                </MButton>
-               <MButton borderless variant="white" modifier="danger">
+               <MButton variant="white" modifier="danger">
                   Unlist
                </MButton>
             </div>
          </div>
 
-         <div className="p-20 pt-12 pb-44 flex justify-center">
+         <div className="p-24 pt-0 z-50 pb-16 flex">
             <ProductEditTabSwtich />
             {/* <DescriptionEdit /> */}
          </div>

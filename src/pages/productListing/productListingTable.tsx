@@ -31,7 +31,7 @@ const ProductMoreDropdown = (props: any) => {
             <MButton
                variant="transparent"
                modifier="monochrome"
-               icon={<i className="ri-more-2-fill"></i>}
+               icon={<i className="ri-more-2-fill text-gray-400 text-md"></i>}
             />
          }
       >
@@ -120,7 +120,7 @@ const TableCellRender = (props: any) => {
             <td className="w-20 h-full">
                <div className="h-full w-full flex flex-col justify-center items-center text-sm font-medium text-gray-400">
                   <MCheckbox
-                     size="md"
+                     size="sm"
                      checked={selected}
                      onChange={selectHandler}
                   />
@@ -132,8 +132,8 @@ const TableCellRender = (props: any) => {
          return (
             <td className="h-full ">
                <a className="" href="/products/productname/edit#description">
-                  <div className="text-black text-sm flex font-medium flex-row gap-5  justify-start items-center ">
-                     {/* <div className="w-12 h-12 rounded-md bg-gray-100"></div> */}
+                  <div className="text-black text-sm flex font-medium flex-row gap-2  justify-start items-center ">
+                     <div className="w-10 h-10 rounded-md bg-gray-100"></div>
                      {props.cell.render('Cell')}
                   </div>
                </a>
@@ -155,7 +155,7 @@ const TableCellRender = (props: any) => {
       case 'inventory':
          return (
             <td className="px-8">
-               <div className=" text-black text-sm flex flex-row justify-end items-center">
+               <div className=" text-black text-sm flex flex-row justify-end items-center font-medium">
                   {props.cell.render('Cell')}
                </div>
             </td>
@@ -163,7 +163,7 @@ const TableCellRender = (props: any) => {
       case 'sales':
          return (
             <td className="px-8">
-               <div className=" text-black text-sm flex flex-row justify-end items-center">
+               <div className=" text-black text-sm flex flex-row justify-end items-center font-medium">
                   {props.cell.render('Cell')}
                </div>
             </td>
@@ -171,7 +171,7 @@ const TableCellRender = (props: any) => {
       case 'revenue':
          return (
             <td className="px-8">
-               <div className=" text-black text-sm flex flex-row justify-end items-center">
+               <div className=" text-black text-sm flex flex-row justify-end items-center font-medium">
                   {props.cell.render('Cell')}
                </div>
             </td>
@@ -189,10 +189,10 @@ const TableCellRender = (props: any) => {
       case 'opt': {
          return (
             <td className="w-20">
-               <div className=" text-black text-sm flex flex-row justify-center items-center">
-                  {props.hover &&
-                     props.selecProdList &&
-                     props.selecProdList.length <= 0 && <ProductMoreDropdown />}
+               <div className=" flex flex-row justify-center items-center">
+                  {props.selecProdList && props.selecProdList.length <= 0 && (
+                     <ProductMoreDropdown />
+                  )}
                </div>
             </td>
          )
@@ -248,7 +248,7 @@ const TableRowRender = (props: any) => {
          onMouseOver={() => sethover(true)}
          onMouseLeave={() => sethover(false)}
          className={classNames(
-            'h-16 border-t-0 border-solid border-gray-100 ',
+            'h-20 border-t-0 border-solid border-gray-100 ',
             props.i % 2 != 0 && 'bg-slate-50',
             selected &&
                'bg-violet-50 border border-solid border-violet-200 border-l-0 border-r-0',
@@ -312,7 +312,7 @@ const ProductTableRender2 = (props: any) => {
             <thead>
                {headerGroups.map((headerGroup) => (
                   <tr
-                     className="h-12 w-full fllex flex-row border border-solid border-gray-200 border-t-0 border-l-0 border-r-0 "
+                     className="h-12 w-full fllex flex-row bg-gray-50 rounded-md"
                      {...headerGroup.getHeaderGroupProps()}
                   >
                      {headerGroup.headers.map((column: any) => {
@@ -326,10 +326,10 @@ const ProductTableRender2 = (props: any) => {
                            >
                               <th
                                  className={classNames(
-                                    `text-sm font-medium   text-black flex flex-row items-center justify-center `,
-                                    column.isSorted &&
-                                       column.canSort &&
-                                       'text-blue-600',
+                                    `text-sm font-medium  flex flex-row items-center justify-center `,
+                                    column.isSorted && column.canSort
+                                       ? 'text-blue-600'
+                                       : 'text-gray-400',
                                     column.canSort && ' hover:text-blue-600',
                                  )}
                               >
@@ -363,57 +363,21 @@ const ProductTableRender2 = (props: any) => {
             </tbody>
          </table>
          <div className="flex flex-row justify-between w-full p-5 border-t-2 border-solid border-gray-100">
-            <div className="flex flex-row gap-1"></div>
             <div className="flex flex-row gap-0 justify-center items-center">
-               <MDropDown
-                  dropButtom={
-                     <MButton
-                        variant="outline"
-                        modifier="monochrome"
-                        size="xs"
-                        rightIcon={<i className="ri-arrow-down-s-line"></i>}
-                     >
-                        Show 5 Proudcts
-                     </MButton>
-                  }
-               >
-                  <Menu.Item>
-                     <a
-                        className={`w-40 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
-                        href="/account-settings"
-                     >
-                        <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                           {/* <i className="ri-home-5-line text-lg  flex justify-center items-center h-max"></i> */}
-                           5 Records
-                        </div>
-                     </a>
-                  </Menu.Item>
-                  <Menu.Item>
-                     <a
-                        className={`w-40 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
-                        href="/account-settings"
-                     >
-                        <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                           {/* <i className="ri-home-5-line text-lg  flex justify-center items-center h-max"></i> */}
-                           10 Records
-                        </div>
-                     </a>
-                  </Menu.Item>
-               </MDropDown>
                <MButton
                   variant="transparent"
                   modifier="monochrome"
                   onClick={() => previousPage()}
-                  icon={<i className="ri-arrow-left-line"></i>}
+                  icon={<i className="ri-arrow-left-line text-gray-400"></i>}
                />
-               <div className="text-sm text-gray-800">
+               <div className="text-sm text-gray-400">
                   Page {pageIndex + 1} of {pageOptions.length}
                </div>
                <MButton
                   variant="transparent"
                   modifier="monochrome"
                   onClick={() => nextPage()}
-                  icon={<i className="ri-arrow-right-line"></i>}
+                  icon={<i className="ri-arrow-right-line text-gray-400"></i>}
                />
             </div>
          </div>

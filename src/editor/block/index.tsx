@@ -8,7 +8,6 @@ import {
    RichUtils,
    convertFromHTML,
    ContentState,
-   Draft,
    DefaultDraftBlockRenderMap,
    convertToRaw,
    getDefaultKeyBinding,
@@ -16,7 +15,6 @@ import {
    EditorChangeType,
    Modifier,
    AtomicBlockUtils,
-   removeTextWithStrategy,
    ContentBlock,
    genKey,
    SelectionState,
@@ -34,11 +32,11 @@ import {
 } from './blocks'
 
 export function BlockRenderer(
-   contentBlock,
-   editorState,
-   editorStateChage,
-   toggelAdderMenu,
-   LockState,
+   contentBlock: any,
+   editorState: any,
+   editorStateChage: any,
+   toggelAdderMenu: any,
+   LockState: any,
 ) {
    const ty = contentBlock.getType()
    switch (ty) {

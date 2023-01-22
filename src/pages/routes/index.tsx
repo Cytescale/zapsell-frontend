@@ -8,18 +8,19 @@ import {
    Navigate,
 } from 'react-router-dom'
 import { useState } from 'react'
-
+import Sidebar from '../../design/components/sidebar'
 import TestPage from '../../design'
 import ProductListing from '../productListing'
 import ProductEarning from '../productearning'
 import ProductEdit from '../productedit'
 import PageHeaderPane from '../../design/components/header'
 import Settings from '../settings'
+import Products from '../productListing/products'
 
 const ShellComp = (props: any) => {
    return (
       <AppBaseCont>
-         <PageHeaderPane />
+         <Sidebar />
 
          <AppInnerCont>
             <AppPageCont>{props.children}</AppPageCont>
