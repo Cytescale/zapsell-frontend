@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.4",
     "@types/draft-js": "^0.11.10",
     "@types/react-router-dom": "^5.3.3",
+    "cal-sans": "^1.0.1",
     "classnames": "^2.3.2",
     "draft-js": "^0.11.7",
     "draftjs-utils": "^0.10.2",

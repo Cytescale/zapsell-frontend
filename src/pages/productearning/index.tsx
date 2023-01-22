@@ -68,18 +68,19 @@ const EarningDownloadModal = (props: any) => {
 
 const EarningCard = (orops: any) => {
   return (
-    <div className="p-7 px-6 flex flex-row grow gap-4 w-fit border border-solid border-gray-200 border-t-0 border-b-0 border-l-0">
+    <div className="p-4 px-6 flex flex-row gap-4 w-fit border border-solid border-gray-200 rounded-xl bg-gray-50">
       <div className="h-full p-0 flex justify-center items-center">
         <div className="h-10 w-10 rounded-full bg-blue-100 text-blue-500 text-xl justify-center items-center flex">
           <i className="ri-coin-line"></i>
         </div>
       </div>
-      <div className=" flex flex-col gap-1 justify-center">
+      <div className=" flex flex-col gap-0 justify-center">
         <div className="text-sm font-medium text-gray-700">Total Revenue</div>
-        <div className="text-xl font-semibold text-black flex grow w-full flex-row justify-between gap-8">
-          10,000 INR{" "}
-          <div className="text-green-700 font-medium text-xs flex justify-center items-center h-fit bg-green-100 w-fit px-2 py-1 rounded-full">
-            <i className="ri-arrow-up-line"></i>100%
+        <div className="text-lg font-semibold text-gray-00 flex flex-row w-full justify-between gap-3">
+          <div> 10,000 INR</div>
+          <div className="text-red-700 text-sm flex flex-row justify-center items-center gap-1">
+            <i className="ri-arrow-down-line"></i>
+            10%
           </div>
         </div>
       </div>
@@ -87,32 +88,13 @@ const EarningCard = (orops: any) => {
   );
 };
 
-const EarningProgress = (props: any) => {
-  return (
-    <div className="p-6  flex flex-col gap-2 grow bg-purple-50 justify-center rounded-t-md">
-      <div className="flex flex-row gap-1 justify-between items-end">
-        <div className="text-sm font-medium text-gray-700">
-          Cumulative Earnings
-        </div>
-        <div className="text-sm font-medium text-purple-600">50%</div>
-      </div>
-      <div className="relative flex flex-row bg-purple-200 h-3 rounded-full">
-        <div className="absolute top-0 left-0 bottom-0 h-full w-1/2 bg-purple-400 rounded-full" />
-      </div>
-      <div className="flex flex-row text-gray-500 text-xs font-medium justify-start items-center gap-1">
-        5,000 INR out of 10,000 INR
-      </div>
-    </div>
-  );
-};
-
 const EarningReading = (props: any) => {
   return (
-    <div className="h-auto flex flex-row justify-between">
+    <div className="h-auto flex flex-row justify-start gap-5">
       <EarningCard />
       <EarningCard />
       <EarningCard />
-      <EarningCard />
+      {/* <EarningCard /> */}
       {/* <EarningProgress /> */}
     </div>
   );
@@ -145,8 +127,8 @@ const ProductEarning = (props: any) => (
       </div>
     </div>
     <div className="relative p-24 pt-0  flex flex-col w-full h-auto justify-center items-center">
-      <div className="w-full  flex flex-col grow  ">
-        {/* <EarningReading /> */}
+      <div className="w-full  flex flex-col grow  gap-10">
+        <EarningReading />
 
         <ProductEarningTable />
       </div>

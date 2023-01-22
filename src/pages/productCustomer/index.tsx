@@ -4,7 +4,7 @@ import PageHeaderPane from "../../design/components/header";
 import { Menu } from "@headlessui/react";
 import MButton from "../../design/components/button";
 import MInput from "../../design/components/input";
-import ProductListingTable from "./productListingTable";
+import CustomerTable from "./customerTable";
 import MModal from "../../design/components/modal";
 import MListBox from "../../design/components/listbox";
 import MDropDown from "../../design/components/dropdown";
@@ -108,7 +108,7 @@ const ProductExportModal = (props: any) => {
           </div>
           <div className="flex flex-row grow justify-center items-center pt-5 gap-2">
             <MButton
-              // icon={<i className="ri-close-line"></i>}
+              icon={<i className="ri-close-line"></i>}
               onClick={() => {
                 setisOpen(false);
               }}
@@ -170,135 +170,27 @@ const ProductSortDropdown = (props: any) => {
   );
 };
 
-const ProductToolbar = (props: any) => {
-  const [show, setshow] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (props.selecProdList && props.selecProdList.length > 0) {
-      setshow(true);
-    } else {
-      setshow(false);
-    }
-  }, [props.selecProdList]);
+const CustomerToolbar = (props: any) => {
   return (
     <>
-      {show ? (
-        <Transition
-          show={show}
-          enter="transition-opacity duration-1000"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-150"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-          className="flex flex-row justify-between items-center bg-violet-50 rounded-t-xl  border-b-solid border-b-2 border-gray-100"
-        >
-          <div className="flex flex-row gap-3 w-fit h-fit px-2 text-sm text-violet-700 font-medium items-center">
-            <span className="w-9 h-9 text-sm flex justify-center items-center rounded-full bg-violet-200">
-              {props.selecProdList.length}
-            </span>{" "}
-            Product Selected
-            <MButton
-              modifier="plain"
-              variant="transparent"
-              size="xs"
-              icon={<i className="ri-add-line"></i>}
-            >
-              Select all products
-            </MButton>
-          </div>
-          <div className="flex flex-row gap-0 h-9">
-            <button
-              onClick={() => {
-                props.setselecProdList([]);
-              }}
-              className="text-sm font-medium  text-violet-800 hover:bg-violet-100 px-3 rounded-md  "
-            >
-              Deselect
-            </button>
-            <button className="text-sm font-medium  text-violet-800 hover:bg-violet-100 px-3 rounded-md  ">
-              Unpublish
-            </button>
-            <button className="text-sm font-medium  text-red-600 hover:bg-violet-100 px-3 rounded-md  ">
-              Delete
-            </button>
-          </div>
-        </Transition>
-      ) : (
-        <Transition
-          show={!show}
-          enter="transition-opacity duration-250"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-150"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-          className="flex flex-row justify-between items-center"
-        >
-          <div className="flex flex-row gap-3 w-full h-fit ">
-            <MInput
-              placeholder="Search product"
-              icon={<i className="ri-search-2-line"></i>}
-              rightButtonIcon={<i className="ri-close-line"></i>}
-            />
-            <MButton
-              modifier="monochrome"
-              variant="normal"
-              icon={<i className="ri-restart-line text-base"></i>}
-            />
-            <ProductSortDropdown />
-            <MButton variant="normal">Filter</MButton>{" "}
-            <MDropDown
-              dropButtom={
-                <MButton
-                  variant="normal"
-                  modifier="monochrome"
-                  rightIcon={<i className="ri-arrow-down-s-line"></i>}
-                >
-                  Status
-                </MButton>
-              }
-            >
-              <Menu.Item>
-                <a
-                  className={`w-40 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
-                  href="/account-settings"
-                >
-                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                    Active
-                  </div>
-                </a>
-              </Menu.Item>
-              <Menu.Item>
-                <a
-                  className={`w-40 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
-                  href="/account-settings"
-                >
-                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                    Drafted
-                  </div>
-                </a>
-              </Menu.Item>
-              <Menu.Item>
-                <a
-                  className={`w-40 p-1.5 pl-4 text-sm text-black hover:bg-slate-100`}
-                  href="/account-settings"
-                >
-                  <div className="flex flex-row gap-2 text-base items-center p-0 tracking-wide">
-                    Unpublished
-                  </div>
-                </a>
-              </Menu.Item>
-            </MDropDown>
-            <ProductExportModal />
-          </div>
-        </Transition>
-      )}
+      <div className="flex flex-row gap-3 w-full h-fit ">
+        <div className="bg-gray-100 text-sm rounded-full px-4 py-2 text-gray-900 font-medium gap-2">
+          Total Customers 100
+        </div>
+        <div className="flex flex-row justify-center items-center bg-gray-100 text-sm rounded-full px-4 py-2 text-gray-900 font-medium gap-2">
+          <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+          Returning Customer
+        </div>
+        <div className="flex flex-row justify-center items-center bg-gray-100 text-sm rounded-full px-4 py-2 text-gray-900 font-medium gap-2">
+          <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+          New Customer
+        </div>
+      </div>
     </>
   );
 };
 
-const ProductListing = (props: any) => {
+const ProductCustomer = (props: any) => {
   const [selecProdList, setselecProdList] = useState<Array<any>>([]);
 
   return (
@@ -312,35 +204,45 @@ const ProductListing = (props: any) => {
       <div className="p-24 pt-16 pb-16 w-full h-fit flex flex-row grow justify-between items-center ">
         <div className="flex flex-col w-fit justify-start items-start">
           <div className="text-gray-800 font-medium text-xl tracking-normal flex flex-row gap-1">
-            Enlisted 10 Products
+            Customers
           </div>
           <div className="text-gray-400 text-sm ">
-            You can details of all the created products
+            Check out all your customers here
           </div>
         </div>
         <div className="flex flex-row justify-end items-center w-fit gap-4">
-          <ProductAddModal />
+          {/* <ProductAddModal /> */}
+          <button
+            className={
+              "bg-gray-100 text-black text-sm font-medium flex justify-center items-center gap-2 px-5 py-3 rounded-md hover:bg-gray-200"
+            }
+          >
+            <i className="ri-refresh-line"></i>
+            Refresh
+          </button>
+          <button
+            className={
+              "bg-violet-600 text-white text-sm font-medium flex justify-center items-center gap-2 px-5 py-3 rounded-md  shadow hover:bg-violet-800"
+            }
+          >
+            <i className="ri-download-line"></i>
+            Export
+          </button>
         </div>
       </div>
       <div className="relative p-24 pt-0 flex flex-col w-full h-auto justify-center items-center">
         <div className="w-full bg-white rounded-xl flex flex-col grow gap-6">
-          <ProductToolbar
-            selecProdList={selecProdList}
-            setselecProdList={setselecProdList}
-          />
-          <ProductListingTable
-            setselecProdList={setselecProdList}
-            selecProdList={selecProdList}
-          />
+          <CustomerToolbar />
+          <CustomerTable />
         </div>
         <div className="text-sm text-gray-600 p-9 font-medium">
           Learn more about{" "}
           <a className="text-blue-500 underline underline-offset-4" href="#">
-            Product Listing <i className="ri-external-link-line"></i>
+            Customers <i className="ri-external-link-line"></i>
           </a>
         </div>
       </div>
     </div>
   );
 };
-export default ProductListing;
+export default ProductCustomer;
