@@ -1,12 +1,19 @@
-import React, { InputHTMLAttributes } from 'react'
-import classNames from 'classnames'
+import React, { InputHTMLAttributes } from "react";
+import classNames from "classnames";
 
 const MSwitch = (props: any) => {
-   return (
-      <label className="inline-flex relative items-center cursor-pointer">
-         <input type="checkbox" value="" className="sr-only peer" />
-         <div
-            className={`
+  return (
+    <label className="inline-flex relative items-center cursor-pointer">
+      <input
+        type="checkbox"
+        value=""
+        className="sr-only peer"
+        onClick={(e) => {
+          props.onChange(e.currentTarget.checked);
+        }}
+      />
+      <div
+        className={`
             w-10 h-6
           bg-gray-300
             peer-focus:outline-none
@@ -26,9 +33,9 @@ const MSwitch = (props: any) => {
             after:transition-all
           peer-checked:bg-blue-500
           `}
-         ></div>
-      </label>
-   )
-}
+      ></div>
+    </label>
+  );
+};
 
-export default MSwitch
+export default MSwitch;

@@ -14,6 +14,8 @@ import MBadge from "../../design/components/badge";
 import DescriptionEdit from "./productdesc";
 import PaymentEdit from "./productpayment";
 import AppearanceEdit from "./productappear";
+import ProductContent from "./productcontent";
+
 
 const ProductTabArr = [
   ["Description", "#description", <i className="ri-information-line"></i>],
@@ -58,7 +60,7 @@ const ProductEditTabSwtich = (props: any) => {
       return <DescriptionEdit />;
     }
     case ProductTabArr[1][1]: {
-      return <div>In Place</div>;
+      return <ProductContent />;
     }
     case ProductTabArr[2][1]: {
       return <PaymentEdit />;
