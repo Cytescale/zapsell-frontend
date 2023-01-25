@@ -66,14 +66,13 @@ const RenderFile = (props: any) => {
   };
   const dragUpdate = (e: any) => {
     if (dr && nodeRef) {
-      //@ts-nocheck
       const dragTag =
         nodeRef &&
         ReactDOM.findDOMNode(nodeRef.current)?.getElementsByClassName(
           DRAG_TARGET_CLASSNAME
         )[0];
       const dragTarRect = dragTag.getBoundingClientRect();
-      console.log(dragTarRect);
+      const dragRootRect = nodeRef.current.getBoundingClientRect();
     }
   };
   const dragEnd = (e: any) => {
